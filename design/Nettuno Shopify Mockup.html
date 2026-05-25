@@ -1,0 +1,2069 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Nettuno — Forno elettrico per pizza · Macte Ovens</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0E0E0E;
+    --bg-2: #161616;
+    --bg-3: #1d1d1d;
+    --line: #2a2a2a;
+    --line-2: #3a3a3a;
+    --fg: #f5f1ea;
+    --fg-2: #b8b1a3;
+    --fg-3: #7a7368;
+    --terracotta: #C04A1F;
+    --terracotta-2: #d65d2e;
+    --olive: #445220;
+    --olive-2: #5b6e2c;
+    --avpn: #d4a04a;
+    --serif: "Fraunces", "Cormorant Garamond", Georgia, serif;
+    --sans: "Inter", -apple-system, sans-serif;
+    --mono: "JetBrains Mono", ui-monospace, monospace;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    background: var(--bg); color: var(--fg);
+    font-family: var(--sans);
+    font-size: 15px;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+    font-feature-settings: "ss01";
+  }
+  img, svg { max-width: 100%; display: block; }
+  button { font: inherit; cursor: pointer; border: none; background: none; color: inherit; }
+  a { color: inherit; text-decoration: none; }
+  .container { max-width: 1280px; margin: 0 auto; padding: 0 32px; }
+  .serif { font-family: var(--serif); font-weight: 400; letter-spacing: -0.02em; }
+  .mono { font-family: var(--mono); }
+  .eyebrow {
+    font-family: var(--mono); font-size: 11px;
+    letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--fg-3);
+    display: inline-flex; align-items: center; gap: 12px;
+  }
+  .eyebrow::before {
+    content: ""; width: 24px; height: 1px; background: var(--terracotta);
+  }
+
+  /* ── NAV ───────────────────────────────────────────────── */
+  .nav {
+    position: sticky; top: 0; z-index: 50;
+    background: rgba(14,14,14,0.85);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border-bottom: 1px solid var(--line);
+  }
+  .nav-inner {
+    display: flex; align-items: center; justify-content: space-between;
+    height: 64px;
+  }
+  .logo {
+    font-family: var(--serif);
+    font-size: 22px;
+    letter-spacing: -0.02em;
+    display: flex; align-items: baseline; gap: 8px;
+  }
+  .logo b { font-weight: 500; }
+  .logo small {
+    font-family: var(--mono);
+    font-size: 9px;
+    color: var(--fg-3);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+  }
+  .nav-menu { display: flex; gap: 28px; font-size: 13px; color: var(--fg-2); font-weight: 500; }
+  .nav-menu a:hover { color: var(--fg); }
+  .nav-right { display: flex; align-items: center; gap: 16px; }
+  .nav-right .country {
+    font-family: var(--mono); font-size: 11px; color: var(--fg-3); letter-spacing: 0.08em;
+  }
+
+  .btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+    padding: 12px 22px;
+    border-radius: 999px;
+    font-weight: 600;
+    font-size: 13px;
+    letter-spacing: 0.01em;
+    transition: all .18s;
+    border: 1px solid transparent;
+    white-space: nowrap;
+  }
+  .btn-primary { background: var(--terracotta); color: var(--fg); }
+  .btn-primary:hover { background: var(--terracotta-2); }
+  .btn-secondary {
+    background: transparent;
+    color: var(--fg);
+    border-color: var(--line-2);
+  }
+  .btn-secondary:hover { border-color: var(--fg); }
+  .btn-lg { padding: 18px 32px; font-size: 14px; }
+
+  /* ── HERO ──────────────────────────────────────────────── */
+  .hero {
+    padding: 48px 0 80px;
+    display: grid;
+    grid-template-columns: 1.15fr 1fr;
+    gap: 64px;
+    align-items: start;
+  }
+  .gallery { position: sticky; top: 96px; }
+  .gallery-main {
+    aspect-ratio: 4/5;
+    background: linear-gradient(180deg, #232020 0%, #161313 100%);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    position: relative;
+    overflow: hidden;
+  }
+  .ph-stripes {
+    position: absolute; inset: 0;
+    background:
+      repeating-linear-gradient(135deg, transparent 0 24px, rgba(255,255,255,0.025) 24px 25px),
+      radial-gradient(ellipse at 50% 60%, rgba(192,74,31,0.18) 0%, transparent 60%);
+  }
+  .ph-label {
+    position: absolute; left: 24px; bottom: 24px;
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    color: var(--fg-3);
+    text-transform: uppercase;
+  }
+  .gallery-badges {
+    position: absolute; top: 24px; left: 24px; right: 24px;
+    display: flex; justify-content: space-between; gap: 12px;
+  }
+  .avpn-seal {
+    display: inline-flex; align-items: center; gap: 10px;
+    padding: 8px 14px 8px 8px;
+    background: var(--bg);
+    border: 1px solid var(--avpn);
+    border-radius: 999px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+  }
+  .avpn-seal .ring {
+    width: 22px; height: 22px;
+    border-radius: 50%;
+    border: 1.5px solid var(--avpn);
+    color: var(--avpn);
+    display: grid; place-items: center;
+    font-family: var(--serif);
+    font-size: 12px;
+    font-style: italic;
+    font-weight: 600;
+  }
+  .made-tag {
+    padding: 7px 12px;
+    background: var(--bg);
+    border: 1px solid var(--line-2);
+    border-radius: 999px;
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--fg-2);
+  }
+  .made-tag .flag { color: var(--terracotta); margin-right: 4px; }
+
+  .gallery-thumbs {
+    display: grid; grid-template-columns: repeat(4, 1fr);
+    gap: 10px; margin-top: 12px;
+  }
+  .thumb {
+    aspect-ratio: 1;
+    background: var(--bg-2);
+    border: 1.5px solid var(--line);
+    border-radius: 10px;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    transition: border-color .15s;
+    display: grid; place-items: end start;
+    padding: 8px;
+  }
+  .thumb.active { border-color: var(--fg); }
+  .thumb::before {
+    content: ""; position: absolute; inset: 0;
+    background: linear-gradient(135deg, #2a2522, #161313);
+    z-index: 0;
+  }
+  .thumb span { position: relative; z-index: 1; font-family: var(--mono); font-size: 9px; color: var(--fg-3); letter-spacing: 0.06em; }
+
+  .buy { }
+  .buy h1 {
+    font-family: var(--serif);
+    font-size: clamp(56px, 5.5vw, 80px);
+    line-height: 0.95;
+    margin: 16px 0 0;
+    letter-spacing: -0.03em;
+    font-weight: 400;
+  }
+  .buy h1 em {
+    font-style: italic;
+    color: var(--terracotta-2);
+  }
+  .buy .tagline {
+    font-size: 17px;
+    color: var(--fg-2);
+    margin: 18px 0 0;
+    max-width: 44ch;
+    line-height: 1.55;
+  }
+  .ratings-line {
+    display: flex; align-items: center; gap: 10px;
+    margin: 24px 0;
+    font-size: 13px; color: var(--fg-2);
+  }
+  .stars-glyph { color: var(--avpn); letter-spacing: 2px; font-size: 14px; }
+  .ratings-line b { color: var(--fg); font-weight: 600; }
+  .ratings-line a { color: var(--terracotta-2); text-decoration: underline; text-underline-offset: 3px; }
+
+  .variant-block {
+    border-top: 1px solid var(--line);
+    padding: 20px 0;
+  }
+  .variant-head {
+    display: flex; justify-content: space-between; align-items: baseline;
+    margin-bottom: 14px;
+  }
+  .variant-head .label {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--fg-3);
+    font-weight: 600;
+  }
+  .variant-head .value { font-size: 13px; font-weight: 500; }
+
+  .model-options { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .model-opt {
+    padding: 18px;
+    border: 1.5px solid var(--line);
+    border-radius: 12px;
+    background: var(--bg-2);
+    text-align: left;
+    transition: all .15s;
+    position: relative;
+  }
+  .model-opt:hover { border-color: var(--line-2); }
+  .model-opt.active { border-color: var(--terracotta); background: rgba(192,74,31,0.08); }
+  .model-opt .m-name { font-family: var(--serif); font-size: 22px; font-weight: 500; letter-spacing: -0.01em; }
+  .model-opt .m-feat { font-size: 12px; color: var(--fg-3); margin-top: 4px; }
+  .model-opt .m-price { font-size: 13px; color: var(--fg-2); margin-top: 8px; font-variant-numeric: tabular-nums; }
+  .model-opt .m-price b { color: var(--fg); font-family: var(--serif); font-size: 18px; font-weight: 500; margin-right: 6px; }
+  .model-opt.active .badge-recom {
+    position: absolute; top: -10px; right: 14px;
+    background: var(--terracotta);
+    color: white;
+    font-family: var(--mono);
+    font-size: 9px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 3px 8px;
+    border-radius: 4px;
+  }
+
+  .color-row { display: flex; gap: 10px; }
+  .color-opt {
+    width: 44px; height: 44px;
+    border-radius: 50%;
+    border: 1.5px solid var(--line);
+    cursor: pointer;
+    position: relative;
+    transition: all .15s;
+    overflow: hidden;
+  }
+  .color-opt::before {
+    content: ""; position: absolute; inset: 4px;
+    border-radius: 50%;
+    background: var(--c, #1a1a1a);
+    box-shadow: inset 0 -4px 8px rgba(0,0,0,0.4);
+  }
+  .color-opt.active { border-color: var(--fg); }
+  .color-opt.active::after {
+    content: ""; position: absolute; inset: -4px;
+    border: 1px solid var(--fg);
+    border-radius: 50%;
+  }
+
+  .price-row {
+    display: flex; align-items: baseline; gap: 14px;
+    padding: 28px 0 14px;
+    border-top: 1px solid var(--line);
+    margin-top: 8px;
+  }
+  .price-now { font-family: var(--serif); font-size: 56px; line-height: 1; letter-spacing: -0.03em; font-weight: 400; }
+  .price-old { color: var(--fg-3); text-decoration: line-through; font-size: 18px; }
+  .save-tag {
+    margin-left: auto;
+    background: var(--olive);
+    color: var(--fg);
+    padding: 6px 12px;
+    border-radius: 999px;
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+  .payment-note {
+    font-size: 13px;
+    color: var(--fg-2);
+    display: flex; align-items: center; gap: 10px;
+    margin: 4px 0 16px;
+  }
+  .payment-note .pill {
+    background: var(--bg-2);
+    border: 1px solid var(--line);
+    padding: 4px 10px;
+    border-radius: 4px;
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--fg-2);
+  }
+
+  .cta-stack { display: grid; gap: 10px; }
+  .cta-stack .btn-primary { padding: 18px; font-size: 14px; }
+  .cta-stack .btn-secondary { padding: 14px; font-size: 13px; }
+
+  .ship-info {
+    margin-top: 18px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    padding: 18px;
+    background: var(--bg-2);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    font-size: 12px;
+  }
+  .ship-info .ic {
+    width: 20px; height: 20px;
+    color: var(--terracotta-2);
+    flex-shrink: 0;
+  }
+  .ship-info .item {
+    display: flex; gap: 10px; align-items: flex-start;
+  }
+  .ship-info b { display: block; color: var(--fg); font-size: 12px; font-weight: 600; }
+  .ship-info span { color: var(--fg-3); font-size: 11px; line-height: 1.4; }
+
+  /* ── TRUST BAR ─────────────────────────────────────────── */
+  .trust-bar {
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    background: var(--bg-2);
+  }
+  .trust-bar-inner {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+  }
+  .trust-item {
+    padding: 28px 24px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    border-right: 1px solid var(--line);
+  }
+  .trust-item:last-child { border-right: 0; }
+  .trust-item .num {
+    font-family: var(--serif);
+    font-size: 36px;
+    line-height: 1;
+    letter-spacing: -0.02em;
+    color: var(--terracotta-2);
+    font-weight: 400;
+    min-width: 60px;
+  }
+  .trust-item .num small {
+    font-family: var(--sans);
+    font-size: 14px;
+    color: var(--fg-3);
+    margin-left: 2px;
+  }
+  .trust-item .lbl { font-size: 12px; font-weight: 600; }
+  .trust-item .sub { font-size: 11px; color: var(--fg-3); font-family: var(--mono); margin-top: 2px; }
+
+  /* ── SECTION ────────────────────────────────────────────── */
+  .section { padding: 100px 0; }
+  .section-head { max-width: 720px; margin-bottom: 64px; }
+  .section-head h2 {
+    font-family: var(--serif);
+    font-size: clamp(48px, 5vw, 68px);
+    line-height: 0.98;
+    margin: 16px 0 18px;
+    letter-spacing: -0.025em;
+    font-weight: 400;
+  }
+  .section-head h2 em { font-style: italic; color: var(--terracotta-2); }
+  .section-head p { color: var(--fg-2); font-size: 17px; max-width: 56ch; }
+
+  /* ── CHI COMPRA ───────────────────────────────────────────── */
+  .journey {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 24px;
+    align-items: stretch;
+  }
+  .journey-card {
+    background: var(--bg-2);
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    padding: 32px;
+    position: relative;
+    display: grid;
+    grid-template-rows: auto auto 1fr auto;
+    gap: 14px;
+  }
+  .journey-card.active {
+    background: linear-gradient(180deg, rgba(192,74,31,0.12) 0%, var(--bg-2) 100%);
+    border-color: var(--terracotta);
+  }
+  .journey-card .step {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--fg-3);
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+  }
+  .journey-card h3 {
+    font-family: var(--serif);
+    font-size: 30px;
+    line-height: 1.1;
+    margin: 0;
+    letter-spacing: -0.01em;
+    font-weight: 400;
+  }
+  .journey-card p { color: var(--fg-2); font-size: 14px; margin: 0; }
+  .journey-card .tag {
+    align-self: flex-start;
+    background: var(--bg);
+    border: 1px solid var(--line-2);
+    padding: 6px 12px;
+    border-radius: 999px;
+    font-size: 11px;
+    color: var(--fg-2);
+    font-weight: 500;
+  }
+  .journey-card.active .tag {
+    background: var(--terracotta);
+    color: var(--fg);
+    border-color: var(--terracotta);
+  }
+
+  /* ── FEATURES ────────────────────────────────────────────── */
+  .features {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--line);
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    overflow: hidden;
+  }
+  .feature {
+    background: var(--bg);
+    padding: 40px 32px;
+    display: grid;
+    gap: 16px;
+  }
+  .feat-icon {
+    width: 56px; height: 56px;
+    background: var(--bg-2);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    display: grid; place-items: center;
+    color: var(--terracotta-2);
+  }
+  .feature h3 {
+    font-family: var(--serif);
+    font-size: 26px;
+    margin: 0;
+    line-height: 1.1;
+    letter-spacing: -0.01em;
+    font-weight: 500;
+  }
+  .feature p { color: var(--fg-2); margin: 0; font-size: 14px; line-height: 1.6; }
+  .feature .feat-stat {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--fg-3);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding-top: 12px;
+    border-top: 1px solid var(--line);
+  }
+  .feature .feat-stat b { color: var(--terracotta-2); font-weight: 600; }
+
+  /* ── UGC ───────────────────────────────────────────────────── */
+  .ugc {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(2, 220px);
+    gap: 12px;
+  }
+  .ugc-tile {
+    position: relative;
+    background: var(--bg-2);
+    border-radius: 10px;
+    overflow: hidden;
+    cursor: pointer;
+  }
+  .ugc-tile::before {
+    content: "";
+    position: absolute; inset: 0;
+    background:
+      linear-gradient(180deg, transparent 50%, rgba(0,0,0,0.7) 100%),
+      var(--ugc-color, linear-gradient(135deg, #2a2522, #1a1614));
+  }
+  .ugc-tile.feat { grid-row: span 2; }
+  .ugc-tile .meta {
+    position: absolute;
+    bottom: 14px; left: 14px; right: 14px;
+    display: flex; justify-content: space-between; align-items: end;
+    color: var(--fg);
+    z-index: 2;
+  }
+  .ugc-tile .meta .name { font-size: 13px; font-weight: 600; }
+  .ugc-tile .meta .city { font-size: 11px; color: var(--fg-2); font-family: var(--mono); letter-spacing: 0.06em; }
+  .ugc-tile .meta .ig {
+    background: rgba(255,255,255,0.15);
+    backdrop-filter: blur(6px);
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-family: var(--mono);
+    font-size: 10px;
+  }
+  .ugc-cta { display: flex; justify-content: center; margin-top: 32px; }
+
+  /* ── REVIEWS ────────────────────────────────────────────────── */
+  .reviews-wrap {
+    display: grid;
+    grid-template-columns: 320px 1fr;
+    gap: 40px;
+  }
+  .reviews-overview {
+    background: var(--bg-2);
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    padding: 32px;
+    height: fit-content;
+  }
+  .reviews-overview .big {
+    font-family: var(--serif);
+    font-size: 72px;
+    line-height: 1;
+    letter-spacing: -0.02em;
+    font-weight: 400;
+  }
+  .reviews-overview .of { color: var(--fg-3); font-size: 16px; }
+  .reviews-overview .stars-glyph { font-size: 20px; display: block; margin: 8px 0; }
+  .reviews-overview .total { color: var(--fg-2); font-size: 13px; }
+  .review-bars { margin-top: 22px; display: grid; gap: 6px; }
+  .review-bar {
+    display: grid;
+    grid-template-columns: 24px 1fr 32px;
+    align-items: center;
+    gap: 10px;
+    font-size: 11px;
+    color: var(--fg-3);
+    font-family: var(--mono);
+  }
+  .review-bar .track {
+    height: 4px;
+    background: var(--line);
+    border-radius: 999px;
+    overflow: hidden;
+  }
+  .review-bar .fill { height: 100%; background: var(--avpn); border-radius: 999px; }
+
+  .reviews-list { display: grid; gap: 16px; }
+  .review {
+    background: var(--bg-2);
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    padding: 28px 32px;
+    display: grid;
+    grid-template-columns: 80px 1fr;
+    gap: 24px;
+    align-items: start;
+  }
+  .review .ph-photo {
+    aspect-ratio: 1;
+    background: linear-gradient(135deg, #2a2522, #1a1614);
+    border-radius: 10px;
+    display: grid; place-items: center;
+    font-family: var(--serif);
+    font-size: 28px;
+    color: var(--fg-2);
+    font-style: italic;
+    font-weight: 400;
+  }
+  .review .head {
+    display: flex; justify-content: space-between; align-items: baseline;
+    flex-wrap: wrap; gap: 12px;
+    margin-bottom: 8px;
+  }
+  .review .head .who { font-weight: 600; font-size: 14px; }
+  .review .head .who .city { color: var(--fg-3); font-weight: 400; font-family: var(--mono); font-size: 11px; margin-left: 8px; letter-spacing: 0.06em; }
+  .review .head .meta { display: flex; align-items: center; gap: 12px; color: var(--fg-3); font-size: 12px; }
+  .review .head .verified { color: var(--olive-2); font-size: 11px; display: flex; align-items: center; gap: 4px; }
+  .review h4 {
+    font-family: var(--serif);
+    font-size: 22px;
+    margin: 4px 0 8px;
+    letter-spacing: -0.01em;
+    font-weight: 500;
+  }
+  .review p { color: var(--fg-2); margin: 0; font-size: 14px; line-height: 1.6; }
+  .review .review-photos {
+    display: flex; gap: 8px;
+    margin-top: 14px;
+  }
+  .review .review-photos .rp {
+    width: 64px; height: 64px;
+    background: linear-gradient(135deg, #2a2522, #1a1614);
+    border-radius: 6px;
+  }
+
+  /* ── TABS / SPECS ──────────────────────────────────────────── */
+  .specs-tabs {
+    background: var(--bg-2);
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    overflow: hidden;
+  }
+  .tab-row {
+    display: flex;
+    border-bottom: 1px solid var(--line);
+  }
+  .tab {
+    padding: 22px 28px;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--fg-3);
+    border-bottom: 2px solid transparent;
+    transition: all .15s;
+    letter-spacing: 0.02em;
+  }
+  .tab.active { color: var(--fg); border-bottom-color: var(--terracotta); }
+  .tab:hover { color: var(--fg); }
+  .tab-body { padding: 40px 48px; }
+  .tab-pane { display: none; }
+  .tab-pane.active { display: grid; grid-template-columns: 1fr 1fr; gap: 16px 64px; }
+  .spec-row {
+    display: flex; justify-content: space-between;
+    padding: 16px 0;
+    border-bottom: 1px solid var(--line);
+    font-size: 14px;
+  }
+  .spec-row .k { color: var(--fg-3); }
+  .spec-row .v { font-weight: 600; font-variant-numeric: tabular-nums; }
+
+  /* ── COMPARE ───────────────────────────────────────────────── */
+  .compare {
+    background: var(--bg-2);
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    overflow: hidden;
+  }
+  .compare-head {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr 1fr;
+    border-bottom: 1px solid var(--line);
+  }
+  .compare-head .col {
+    padding: 32px;
+    border-right: 1px solid var(--line);
+    position: relative;
+  }
+  .compare-head .col:last-child { border-right: 0; }
+  .compare-head .col.featured { background: rgba(192,74,31,0.05); }
+  .compare-head .ph-mini {
+    aspect-ratio: 16/10;
+    background: linear-gradient(135deg, #2a2522, #1a1614);
+    border-radius: 8px;
+    margin-bottom: 16px;
+  }
+  .compare-head .name {
+    font-family: var(--serif);
+    font-size: 28px;
+    letter-spacing: -0.01em;
+    font-weight: 500;
+  }
+  .compare-head .name em { font-style: italic; color: var(--terracotta-2); }
+  .compare-head .price { font-size: 18px; margin-top: 8px; }
+  .compare-head .price b { font-family: var(--serif); font-weight: 500; font-size: 22px; }
+  .compare-head .col.featured .star {
+    position: absolute; top: 16px; right: 16px;
+    background: var(--terracotta);
+    color: white;
+    padding: 4px 10px;
+    border-radius: 999px;
+    font-family: var(--mono);
+    font-size: 9px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+  .compare-row {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr 1fr;
+    border-bottom: 1px solid var(--line);
+  }
+  .compare-row:last-child { border-bottom: 0; }
+  .compare-row .cell {
+    padding: 18px 32px;
+    border-right: 1px solid var(--line);
+    font-size: 14px;
+    display: flex; align-items: center;
+  }
+  .compare-row .cell:last-child { border-right: 0; }
+  .compare-row .cell.label { color: var(--fg-3); font-size: 12px; text-transform: uppercase; letter-spacing: 0.08em; font-weight: 600; font-family: var(--mono); }
+  .compare-row .cell.featured { background: rgba(192,74,31,0.05); font-weight: 600; }
+  .check { color: var(--olive-2); font-size: 16px; }
+  .dash { color: var(--fg-3); font-size: 16px; }
+
+  /* ── FAQ ───────────────────────────────────────────────────── */
+  .faq { max-width: 900px; }
+  .faq-item {
+    border-bottom: 1px solid var(--line);
+    cursor: pointer;
+  }
+  .faq-q {
+    padding: 28px 0;
+    display: flex; justify-content: space-between; align-items: center;
+    font-family: var(--serif);
+    font-size: 26px;
+    letter-spacing: -0.01em;
+    font-weight: 500;
+  }
+  .faq-q .plus {
+    width: 32px; height: 32px;
+    border-radius: 50%;
+    border: 1px solid var(--line-2);
+    display: grid; place-items: center;
+    font-size: 18px;
+    flex-shrink: 0;
+    transition: transform .25s, background .25s, color .25s;
+  }
+  .faq-item.open .plus {
+    background: var(--terracotta);
+    border-color: var(--terracotta);
+    color: white;
+    transform: rotate(45deg);
+  }
+  .faq-a {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows .25s ease;
+    color: var(--fg-2);
+    font-size: 15px;
+    line-height: 1.65;
+  }
+  .faq-a > div { overflow: hidden; max-width: 70ch; }
+  .faq-item.open .faq-a { grid-template-rows: 1fr; }
+  .faq-item.open .faq-a > div { padding-bottom: 32px; }
+
+  /* ── FINAL CTA ─────────────────────────────────────────────── */
+  .final-cta {
+    background:
+      radial-gradient(ellipse at 30% 50%, rgba(192,74,31,0.18) 0%, transparent 60%),
+      var(--bg-2);
+    border: 1px solid var(--line);
+    border-radius: 24px;
+    padding: 80px 64px;
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap: 64px;
+    align-items: center;
+    margin-bottom: 100px;
+  }
+  .final-cta h2 {
+    font-family: var(--serif);
+    font-size: clamp(44px, 4.5vw, 64px);
+    line-height: 1;
+    margin: 16px 0 18px;
+    letter-spacing: -0.025em;
+    font-weight: 400;
+  }
+  .final-cta h2 em { font-style: italic; color: var(--terracotta-2); }
+  .final-cta p { color: var(--fg-2); font-size: 16px; max-width: 50ch; }
+  .final-cta .guarantees {
+    display: grid; gap: 14px;
+  }
+  .guarantee {
+    display: flex; gap: 16px;
+    padding: 18px 20px;
+    background: rgba(255,255,255,0.02);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+  }
+  .guarantee .gnum {
+    font-family: var(--serif);
+    font-size: 24px;
+    color: var(--terracotta-2);
+    font-style: italic;
+    line-height: 1;
+    flex-shrink: 0;
+  }
+  .guarantee b { font-size: 13px; display: block; margin-bottom: 2px; }
+  .guarantee span { font-size: 12px; color: var(--fg-3); }
+  .final-cta-actions { display: flex; gap: 12px; margin-top: 28px; flex-wrap: wrap; }
+
+  /* ── FOOTER ────────────────────────────────────────────────── */
+  footer {
+    background: #080808;
+    padding: 64px 0 32px;
+    border-top: 1px solid var(--line);
+  }
+  .foot-mini {
+    display: flex; justify-content: space-between;
+    color: var(--fg-3);
+    font-size: 12px;
+    font-family: var(--mono);
+  }
+
+  /* ── MICRO ROW ABOVE-FOLD ──────────────────────────────────── */
+  .micro-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0;
+    margin: 14px 0 0;
+    padding: 14px 16px;
+    background: var(--bg-2);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    cursor: pointer;
+    transition: border-color .15s, background .15s;
+  }
+  .micro-row:hover { border-color: var(--terracotta); background: rgba(192,74,31,0.06); }
+  .micro-row .mi {
+    display: flex; align-items: center; gap: 6px;
+    font-size: 11.5px;
+    color: var(--fg-2);
+    padding: 0 14px;
+    border-right: 1px solid var(--line);
+    line-height: 1;
+  }
+  .micro-row .mi:first-child { padding-left: 0; }
+  .micro-row .mi:last-child { border-right: 0; padding-right: 0; }
+  .micro-row .mi b { color: var(--fg); font-weight: 600; }
+  .micro-row .mi-icon { color: var(--terracotta-2); font-size: 13px; }
+  .micro-row .mi-icon.avpn-i { color: var(--avpn); }
+  .micro-row .mi-icon.check-i { color: var(--olive-2); }
+  .micro-row .mi-icon.flag-i { color: var(--terracotta); }
+
+  /* viewer count + free ship */
+  .live-badges {
+    display: flex; gap: 10px; flex-wrap: wrap;
+    margin: 18px 0 0;
+  }
+  .live-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 7px 12px;
+    background: var(--bg-2);
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    font-size: 11px;
+    color: var(--fg-2);
+  }
+  .live-badge.ship { color: var(--olive-2); border-color: rgba(91,110,44,0.4); }
+  .live-badge.viewers { color: var(--fg-2); }
+  .live-badge .pulse {
+    width: 7px; height: 7px;
+    border-radius: 50%;
+    background: #d65d2e;
+    position: relative;
+    flex-shrink: 0;
+  }
+  .live-badge .pulse::after {
+    content: ""; position: absolute; inset: -3px;
+    border-radius: 50%;
+    background: #d65d2e;
+    opacity: 0.6;
+    animation: pulse 2s infinite;
+  }
+  @keyframes pulse {
+    0% { transform: scale(1); opacity: 0.6; }
+    100% { transform: scale(2.5); opacity: 0; }
+  }
+
+  /* ── JOURNEY (3 colors) ───────────────────────────────────── */
+  .journey-card.step-1 {
+    background: linear-gradient(180deg, #1f1f1f 0%, var(--bg-2) 100%);
+    border-color: #333;
+  }
+  .journey-card.step-2 {
+    background: linear-gradient(180deg, rgba(192,74,31,0.18) 0%, rgba(192,74,31,0.04) 100%);
+    border-color: rgba(192,74,31,0.4);
+  }
+  .journey-card.step-3 {
+    background: linear-gradient(180deg, rgba(68,82,32,0.35) 0%, rgba(68,82,32,0.1) 100%);
+    border-color: var(--olive-2);
+  }
+  .journey-card .arrow {
+    position: absolute;
+    top: 50%;
+    right: -16px;
+    transform: translateY(-50%);
+    color: var(--fg-3);
+    z-index: 2;
+    background: var(--bg);
+    width: 32px; height: 32px;
+    border-radius: 50%;
+    border: 1px solid var(--line);
+    display: grid; place-items: center;
+  }
+  .journey-card:last-child .arrow { display: none; }
+
+  /* ── MINI REVIEWS (ex-UGC) ─────────────────────────────────── */
+  .mini-reviews {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+  .mini-review {
+    background: var(--bg-2);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 28px;
+    position: relative;
+    display: grid;
+    grid-template-rows: auto auto auto 1fr;
+    gap: 14px;
+  }
+  .mini-review.feat {
+    border-color: var(--terracotta);
+    background: linear-gradient(180deg, rgba(192,74,31,0.08) 0%, var(--bg-2) 100%);
+  }
+  .mini-review.feat .verif-tag {
+    position: absolute;
+    top: -10px;
+    left: 24px;
+    background: var(--terracotta);
+    color: white;
+    padding: 4px 10px;
+    border-radius: 999px;
+    font-family: var(--mono);
+    font-size: 9px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+  .mini-review .head {
+    display: flex; align-items: center; gap: 12px;
+  }
+  .mini-review .av {
+    width: 44px; height: 44px;
+    border-radius: 50%;
+    display: grid; place-items: center;
+    color: white;
+    font-family: var(--serif);
+    font-size: 18px;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    flex-shrink: 0;
+  }
+  .mini-review .ident { display: flex; flex-direction: column; gap: 2px; }
+  .mini-review .ident .nm { font-size: 14px; font-weight: 600; }
+  .mini-review .ident .ct { font-size: 11px; color: var(--fg-3); font-family: var(--mono); letter-spacing: 0.04em; }
+  .mini-review .st { color: var(--avpn); letter-spacing: 2px; font-size: 13px; }
+  .mini-review p {
+    margin: 0;
+    font-size: 14px;
+    line-height: 1.55;
+    color: var(--fg-2);
+  }
+  .mini-review .quote::before { content: "“"; color: var(--terracotta-2); font-family: var(--serif); font-size: 24px; margin-right: 2px; line-height: 0; }
+  .mini-review .quote::after { content: "”"; color: var(--terracotta-2); font-family: var(--serif); font-size: 24px; margin-left: 2px; line-height: 0; }
+
+  /* ── PREMIUM SPEC TABLE ────────────────────────────────────── */
+  .spec-premium {
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    overflow: hidden;
+    background: var(--bg-2);
+  }
+  .spec-premium .sp-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+  }
+  .spec-premium .sp-row > div {
+    padding: 20px 28px;
+    border-bottom: 1px solid var(--line);
+    font-size: 14px;
+  }
+  .spec-premium .sp-row > div:first-child {
+    color: var(--fg-3);
+    border-right: 1px solid var(--line);
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .spec-premium .sp-row > div:last-child {
+    font-weight: 600;
+    font-variant-numeric: tabular-nums;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .spec-premium .sp-row:nth-child(odd) {
+    background: rgba(255,255,255,0.018);
+  }
+  .spec-premium .sp-row:last-child > div { border-bottom: 0; }
+  .spec-premium .sp-row .ic-dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--terracotta);
+    flex-shrink: 0;
+  }
+  .spec-premium .sp-row .v-tag {
+    background: rgba(91,110,44,0.18);
+    color: var(--olive-2);
+    padding: 3px 8px;
+    border-radius: 4px;
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.04em;
+  }
+
+  /* ── STICKY ADD TO CART (top desktop) ────────────────────── */
+  .stickybar {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    background: rgba(8,8,8,0.95);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border-bottom: 1px solid var(--line);
+    z-index: 60;
+    transform: translateY(-110%);
+    transition: transform .3s cubic-bezier(.4,0,.2,1);
+  }
+  .stickybar.show { transform: translateY(0); }
+  .stickybar-inner {
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+  }
+  .stickybar .l { display: flex; align-items: center; gap: 14px; min-width: 0; }
+  .stickybar .stickybar-thumb {
+    width: 42px; height: 42px;
+    border-radius: 8px;
+    background: linear-gradient(135deg, #2a2522, #161313);
+    border: 1px solid var(--line);
+    flex-shrink: 0;
+  }
+  .stickybar .nm { font-size: 14px; font-weight: 600; }
+  .stickybar .sub { font-size: 11px; color: var(--fg-3); font-family: var(--mono); letter-spacing: 0.04em; }
+  .stickybar .r { display: flex; align-items: center; gap: 16px; }
+  .stickybar .stickybar-price { font-family: var(--serif); font-size: 26px; line-height: 1; }
+  .stickybar .stickybar-price small { color: var(--fg-3); font-size: 12px; margin-left: 6px; }
+
+  /* ── TOAST ─────────────────────────────────────────────────── */
+  .toast-wrap {
+    position: fixed;
+    bottom: 24px;
+    left: 24px;
+    z-index: 70;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    pointer-events: none;
+  }
+  .toast {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: rgba(22,22,22,0.95);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border: 1px solid var(--line-2);
+    border-radius: 12px;
+    padding: 12px 18px 12px 14px;
+    max-width: 360px;
+    box-shadow: 0 12px 32px rgba(0,0,0,0.4);
+    transform: translateX(-110%);
+    opacity: 0;
+    transition: transform .35s cubic-bezier(.4,0,.2,1), opacity .25s;
+    pointer-events: auto;
+  }
+  .toast.in { transform: translateX(0); opacity: 1; }
+  .toast .av-toast {
+    width: 36px; height: 36px;
+    border-radius: 50%;
+    display: grid; place-items: center;
+    color: white;
+    font-family: var(--serif);
+    font-size: 16px;
+    flex-shrink: 0;
+  }
+  .toast .tx { font-size: 13px; line-height: 1.4; }
+  .toast .tx b { font-weight: 600; }
+  .toast .tx small { display: block; color: var(--fg-3); font-size: 11px; font-family: var(--mono); margin-top: 2px; letter-spacing: 0.04em; }
+
+  /* ── AVPN footer line ────────────────────────────────────── */
+  .avpn-foot {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 28px 0;
+    border-bottom: 1px solid var(--line);
+    margin-bottom: 24px;
+  }
+  .avpn-foot .seal-big {
+    width: 64px; height: 64px;
+    border-radius: 50%;
+    border: 2px solid var(--avpn);
+    display: grid; place-items: center;
+    flex-shrink: 0;
+    background: var(--bg);
+  }
+  .avpn-foot .seal-big .inner {
+    text-align: center;
+    color: var(--avpn);
+    font-family: var(--serif);
+    line-height: 1;
+  }
+  .avpn-foot .seal-big .inner b {
+    display: block;
+    font-style: italic;
+    font-size: 22px;
+    font-weight: 600;
+  }
+  .avpn-foot .seal-big .inner small {
+    font-size: 7px;
+    letter-spacing: 0.18em;
+    font-family: var(--mono);
+    margin-top: 2px;
+    display: block;
+  }
+  .avpn-foot .txt { font-size: 14px; color: var(--fg-2); max-width: 56ch; }
+  .avpn-foot .txt b { color: var(--fg); }
+
+  /* ── RESPONSIVE ────────────────────────────────────────────── */
+  @media (max-width: 980px) {
+    .hero { grid-template-columns: 1fr; gap: 32px; padding: 32px 0 56px; }
+    .gallery { position: static; }
+    .trust-bar-inner { grid-template-columns: 1fr 1fr; }
+    .trust-item:nth-child(2) { border-right: 0; }
+    .trust-item:nth-child(-n+2) { border-bottom: 1px solid var(--line); }
+    .journey { grid-template-columns: 1fr; }
+    .journey-card .arrow { display: none; }
+    .reviews-wrap { grid-template-columns: 1fr; }
+    .compare-head, .compare-row { grid-template-columns: 1fr; }
+    .compare-head .col, .compare-row .cell { border-right: 0; border-bottom: 1px solid var(--line); }
+    .final-cta { grid-template-columns: 1fr; padding: 48px 32px; }
+    .tab-pane.active { grid-template-columns: 1fr; }
+  }
+
+  @media (max-width: 720px) {
+    .container { padding: 0 18px; }
+    .nav-menu { display: none; }
+    .nav-right .country { display: none; }
+    .section { padding: 64px 0; }
+    .section-head { margin-bottom: 40px; }
+    .buy h1 { font-size: 44px; }
+
+    /* HERO mobile swiper for gallery */
+    .gallery-main { aspect-ratio: 1; }
+    .gallery-thumbs {
+      display: flex;
+      gap: 10px;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      padding-bottom: 4px;
+      margin: 12px -18px 0;
+      padding-left: 18px; padding-right: 18px;
+    }
+    .gallery-thumbs::-webkit-scrollbar { display: none; }
+    .thumb {
+      flex: 0 0 96px;
+      scroll-snap-align: start;
+    }
+
+    /* features 1 col */
+    .features { grid-template-columns: 1fr; }
+    .feature { padding: 32px 24px; }
+
+    /* mini-reviews 1 col + or horizontal scroll */
+    .mini-reviews {
+      display: flex;
+      gap: 12px;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      margin: 0 -18px;
+      padding: 12px 18px;
+    }
+    .mini-reviews::-webkit-scrollbar { display: none; }
+    .mini-review {
+      flex: 0 0 84%;
+      scroll-snap-align: start;
+    }
+
+    /* reviews list - horizontal scroll */
+    .reviews-list {
+      display: flex;
+      gap: 12px;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      margin: 0 -18px;
+      padding: 12px 18px;
+    }
+    .reviews-list::-webkit-scrollbar { display: none; }
+    .review {
+      flex: 0 0 88%;
+      scroll-snap-align: start;
+      grid-template-columns: 64px 1fr;
+      gap: 16px;
+      padding: 22px 24px;
+    }
+
+    /* compare stacked cards */
+    .compare-head { display: flex; flex-direction: column; }
+    .compare-head .col { border-right: 0; border-bottom: 1px solid var(--line); padding: 24px; }
+    .compare-head .col:first-child { display: none; }
+    .compare-row { display: flex; flex-direction: column; padding: 0; }
+    .compare-row .cell {
+      border-right: 0;
+      border-bottom: 1px solid var(--line);
+      padding: 14px 24px;
+      display: flex;
+      justify-content: space-between;
+    }
+    .compare-row .cell.label::after {
+      content: "";
+    }
+    .compare-row .cell.label {
+      background: rgba(255,255,255,0.02);
+      color: var(--fg-3);
+      font-size: 11px;
+    }
+
+    /* specs premium 1 col */
+    .spec-premium .sp-row { grid-template-columns: 1fr; }
+    .spec-premium .sp-row > div:first-child { border-right: 0; border-bottom: 0; padding-bottom: 4px; }
+    .spec-premium .sp-row > div:last-child { padding-top: 6px; }
+
+    /* trust bar 1 col stacked */
+    .trust-bar-inner { grid-template-columns: 1fr; }
+    .trust-item { border-right: 0; border-bottom: 1px solid var(--line); padding: 22px 18px; }
+    .trust-item:last-child { border-bottom: 0; }
+
+    /* CTA final */
+    .final-cta { padding: 40px 24px; }
+    .final-cta h2 { font-size: 38px; }
+
+    /* faq */
+    .faq-q { font-size: 19px; padding: 22px 0; }
+
+    /* sticky bar moves to bottom on mobile */
+    .stickybar {
+      top: auto;
+      bottom: 0;
+      border-bottom: 0;
+      border-top: 1px solid var(--line);
+      transform: translateY(110%);
+    }
+    .stickybar.show { transform: translateY(0); }
+    .stickybar-inner { height: auto; padding: 12px 0; gap: 12px; }
+    .stickybar .stickybar-thumb { width: 36px; height: 36px; }
+    .stickybar .nm { font-size: 13px; }
+    .stickybar .stickybar-price { font-size: 20px; }
+    .stickybar .btn { padding: 10px 16px; font-size: 12px; }
+
+    .toast-wrap { left: 12px; right: 12px; bottom: 80px; }
+    .toast { max-width: none; }
+
+    .avpn-foot { flex-direction: column; align-items: flex-start; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ─── STICKY ADD-TO-CART BAR ─────────────────────────── -->
+<div class="stickybar" id="stickybar">
+  <div class="container stickybar-inner">
+    <div class="l">
+      <div class="stickybar-thumb"></div>
+      <div>
+        <div class="nm">Nettuno — Forno elettrico pizza</div>
+        <div class="sub" id="sb-variant">Standard · Nero opaco</div>
+      </div>
+    </div>
+    <div class="r">
+      <span class="stickybar-price serif" id="sb-price">€ 749</span>
+      <button class="btn btn-primary">Aggiungi al carrello</button>
+    </div>
+  </div>
+</div>
+
+<!-- ─── 1. STICKY NAV ──────────────────────────────────────── -->
+<nav class="nav">
+  <div class="container nav-inner">
+    <div class="logo">
+      Macte <b>Ovens</b> <small>· Salerno, IT</small>
+    </div>
+    <div class="nav-menu">
+      <a href="#">Forni</a>
+      <a href="#">Accessori</a>
+      <a href="#">Ricette</a>
+      <a href="#">Storia</a>
+      <a href="#">Assistenza</a>
+    </div>
+    <div class="nav-right">
+      <span class="country">🇮🇹 IT · EUR</span>
+      <a href="#buy" class="btn btn-primary">Acquista ora</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ─── 2. HERO ───────────────────────────────────────────── -->
+<section class="container hero" id="buy">
+  <div class="gallery">
+    <div class="gallery-main">
+      <div class="ph-stripes"></div>
+      <div class="gallery-badges">
+        <div class="avpn-seal"><span class="ring">A</span> Certificato AVPN</div>
+        <div class="made-tag"><span class="flag">●</span> Made in Italy</div>
+      </div>
+      <div class="ph-label">[ scatto principale · 4:5 · forno Nettuno ]</div>
+    </div>
+    <div class="gallery-thumbs">
+      <button class="thumb active"><span>01 · Fronte</span></button>
+      <button class="thumb"><span>02 · 3/4</span></button>
+      <button class="thumb"><span>03 · Camera</span></button>
+      <button class="thumb"><span>04 · Pizza</span></button>
+    </div>
+  </div>
+
+  <div class="buy">
+    <span class="eyebrow">Forno elettrico professionale</span>
+    <h1 class="serif">Nettuno <em>napoletana</em><br>in 90 secondi.</h1>
+    <p class="tagline">
+      Progettato e costruito a Salerno. Niente componenti rimarchiati: ogni pezzo
+      passa per la nostra officina, ogni saldatura per le nostre mani.
+    </p>
+
+    <div class="ratings-line">
+      <span class="stars-glyph">★★★★★</span>
+      <b>4.9</b>
+      <span>su 487 recensioni —</span>
+      <a href="#reviews">leggile</a>
+    </div>
+
+    <a href="#reviews" class="micro-row" aria-label="Vai alle recensioni">
+      <span class="mi"><span class="mi-icon">★</span> <b>4.9</b>/5 · 247 clienti</span>
+      <span class="mi"><span class="mi-icon flag-i">●</span> Made in Italy</span>
+      <span class="mi"><span class="mi-icon avpn-i">▲</span> Certificato AVPN</span>
+      <span class="mi"><span class="mi-icon check-i">✓</span> <b>0.2%</b> failure rate</span>
+    </a>
+
+    <!-- Variant: Model -->
+    <div class="variant-block">
+      <div class="variant-head">
+        <span class="label">01 · Modello</span>
+        <span class="value">Standard</span>
+      </div>
+      <div class="model-options">
+        <button class="model-opt active" data-model="standard">
+          <div class="m-name serif">Nettuno</div>
+          <div class="m-feat">Cottura tradizionale, doppio termostato</div>
+          <div class="m-price"><b>€ 749</b> spedizione inclusa</div>
+        </button>
+        <button class="model-opt" data-model="advanced">
+          <span class="badge-recom">Top scelta</span>
+          <div class="m-name serif">Nettuno <em style="font-style:italic;color:var(--terracotta-2)">ADVANCED</em></div>
+          <div class="m-feat">Controllo PID + Autoboost, recupero termico immediato</div>
+          <div class="m-price"><b>€ 1.149</b> spedizione inclusa</div>
+        </button>
+      </div>
+    </div>
+
+    <!-- Variant: Color -->
+    <div class="variant-block">
+      <div class="variant-head">
+        <span class="label">02 · Finitura</span>
+        <span class="value" id="color-name">Nero opaco</span>
+      </div>
+      <div class="color-row">
+        <button class="color-opt active" style="--c:#1a1614" data-color="Nero opaco" aria-label="Nero opaco"></button>
+        <button class="color-opt" style="--c:#7a7670" data-color="Grigio Salerno" aria-label="Grigio"></button>
+        <button class="color-opt" style="--c:#ede8de" data-color="Bianco osso" aria-label="Bianco"></button>
+        <button class="color-opt" style="--c:#a8623a" data-color="Rame" aria-label="Rame"></button>
+      </div>
+    </div>
+
+    <!-- Price -->
+    <div class="price-row">
+      <span class="price-now serif" id="price-display">€ 749</span>
+      <span class="price-old">€ 899</span>
+      <span class="save-tag">Risparmi 17%</span>
+    </div>
+    <div class="payment-note">
+      <span class="pill">50% / 50%</span>
+      <span>Acconto del 50% all'ordine, saldo prima della spedizione</span>
+    </div>
+
+    <div class="live-badges">
+      <span class="live-badge ship">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 13l4 4L19 7"/></svg>
+        Spedizione gratuita sopra € 500
+      </span>
+      <span class="live-badge viewers">
+        <span class="pulse"></span>
+        <span id="viewers-num">12</span>&nbsp;persone stanno guardando questo prodotto
+      </span>
+    </div>
+
+    <!-- CTAs -->
+    <div class="cta-stack">
+      <button class="btn btn-primary btn-lg">Acquista — versa l'acconto di € 374,50</button>
+      <button class="btn btn-secondary">Aggiungi al carrello</button>
+    </div>
+
+    <!-- Ship info -->
+    <div class="ship-info">
+      <div class="item">
+        <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <rect x="2" y="6" width="14" height="11" rx="1"/><path d="M16 9h4l2 3v5h-6"/>
+          <circle cx="6" cy="18" r="1.5"/><circle cx="18" cy="18" r="1.5"/>
+        </svg>
+        <div><b>Spedizione 5–7 giorni</b><span>Corriere dedicato, consegna al piano</span></div>
+      </div>
+      <div class="item">
+        <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M12 2l8 4v6c0 5-3.5 9-8 10-4.5-1-8-5-8-10V6l8-4z"/>
+          <path d="M9 12l2 2 4-4"/>
+        </svg>
+        <div><b>2 anni di garanzia</b><span>Estendibile a 4 con MacteCare</span></div>
+      </div>
+      <div class="item">
+        <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M14 7h6v6"/><path d="M20 7l-7 7-4-4-7 7"/>
+        </svg>
+        <div><b>0.2% failure rate</b><span>Tra i più bassi del settore</span></div>
+      </div>
+      <div class="item">
+        <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M14.7 6.3a4 4 0 1 0-5 5l-7 7v3h3l7-7a4 4 0 0 0 5-5l-2 2-3-1-1-3 2-1z"/>
+        </svg>
+        <div><b>Riparazione in 15 min</b><span>Pannello posteriore accessibile</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── 3. TRUST BAR ──────────────────────────────────────── -->
+<section class="trust-bar">
+  <div class="container">
+    <div class="trust-bar-inner">
+      <div class="trust-item">
+        <span class="num serif">A</span>
+        <div>
+          <div class="lbl">Certificato AVPN</div>
+          <div class="sub">Verace Pizza Napoletana</div>
+        </div>
+      </div>
+      <div class="trust-item">
+        <span class="num serif">100<small>%</small></span>
+        <div>
+          <div class="lbl">Made in Italy</div>
+          <div class="sub">Progettato e costruito a Salerno</div>
+        </div>
+      </div>
+      <div class="trust-item">
+        <span class="num serif">0.2<small>%</small></span>
+        <div>
+          <div class="lbl">Failure rate</div>
+          <div class="sub">Su 12.000+ unità vendute</div>
+        </div>
+      </div>
+      <div class="trust-item">
+        <span class="num serif">5–7</span>
+        <div>
+          <div class="lbl">Giorni di spedizione</div>
+          <div class="sub">Tutta Italia, corriere dedicato</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── 4. UPGRADE JOURNEY ────────────────────────────────── -->
+<section class="section container">
+  <div class="section-head">
+    <span class="eyebrow">L'upgrade journey</span>
+    <h2 class="serif">Il percorso di<br>ogni <em>appassionato vero.</em></h2>
+    <p>Tre tappe che riconosci. Dall'errore di acquisto da 100 € al forno che ti tieni per dieci anni. Niente pentimenti, solo cottura.</p>
+  </div>
+  <div class="journey">
+    <div class="journey-card step-1">
+      <span class="step">/ Tappa 01 · Inizio</span>
+      <h3>Fornetto da<br>€ 100</h3>
+      <p>Forno tondo da 1.200W, 350°C dichiarati che diventano 280° reali. Pizza molliccia, cornicione piatto. Pensi sia colpa dell'impasto.</p>
+      <span class="tag">"Magari basta questo"</span>
+      <span class="arrow">→</span>
+    </div>
+    <div class="journey-card step-2">
+      <span class="step">/ Tappa 02 · Frustrazione</span>
+      <h3>Marchio noto<br>a gas</h3>
+      <p>Bombola, esterno, vento che spegne la fiamma, fumo che scappa. Bello da fotografare, scomodo il martedì sera. Lo accendi 4 volte l'anno.</p>
+      <span class="tag">"Ho speso 500€ per niente"</span>
+      <span class="arrow">→</span>
+    </div>
+    <div class="journey-card step-3">
+      <span class="step">/ Tappa 03 · Finalmente</span>
+      <h3>Macte<br>Nettuno</h3>
+      <p>Elettrico, in cucina, 450°C reali certificati, 90 secondi a infornata. Lo accendi quando vuoi. La pizza è quella della pizzeria sotto casa — quella vera, non quella turistica.</p>
+      <span class="tag">"Mai più cambierò forno"</span>
+    </div>
+  </div>
+</section>
+
+<!-- ─── 5. FEATURES ───────────────────────────────────────── -->
+<section class="section container">
+  <div class="section-head">
+    <span class="eyebrow">Cosa lo rende diverso</span>
+    <h2 class="serif">Tre cose che <em>non trovi altrove.</em></h2>
+    <p>Niente claim gonfiati, niente specifiche di catalogo copiate. Solo quello che sta dietro a 12.000 forni in giro per l'Europa.</p>
+  </div>
+  <div class="features">
+    <div class="feature">
+      <div class="feat-icon">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M12 2c2 3-1 5 0 8s4 2 4 6a4 4 0 0 1-8 0c0-3 3-5 4-8s-2-3 0-6z"/>
+          <path d="M8 18a4 4 0 0 0 8 0"/>
+        </svg>
+      </div>
+      <h3>450°C reali, 90 secondi.</h3>
+      <p>Doppia resistenza indipendente cielo/platea, pietra biscotto di Casapulla. Misurati con termocamera FLIR, non con il pirometro del cinese.</p>
+      <span class="feat-stat">Temp. dichiarata = temp. <b>misurata</b></span>
+    </div>
+    <div class="feature">
+      <div class="feat-icon">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <rect x="3" y="6" width="18" height="13" rx="2"/>
+          <path d="M7 3v3M17 3v3M3 10h18"/>
+          <circle cx="8" cy="14" r="1"/><circle cx="12" cy="14" r="1"/><circle cx="16" cy="14" r="1"/>
+        </svg>
+      </div>
+      <h3>Progettazione 100% interna.</h3>
+      <p>Niente componenti cinesi rimarchiati. Ogni resistenza, ogni guarnizione, ogni saldatura nasce a Salerno. Per questo il failure rate è dello 0.2%.</p>
+      <span class="feat-stat">0 brevetti comprati · <b>27 depositati</b></span>
+    </div>
+    <div class="feature">
+      <div class="feat-icon">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M14 7l-3-3-3 3"/>
+          <path d="M14 17l-3 3-3-3"/>
+          <rect x="5" y="9" width="14" height="6" rx="1"/>
+          <path d="M9 12h6"/>
+        </svg>
+      </div>
+      <h3>Riparabile in 15 minuti.</h3>
+      <p>Il pannello posteriore si apre con 4 viti. Resistenze, ventole e termostato si sostituiscono come una stampante. Lo facciamo apposta: ti vendiamo un forno, non un ingombro.</p>
+      <span class="feat-stat">Ricambi disponibili per <b>10 anni</b></span>
+    </div>
+  </div>
+</section>
+
+<!-- ─── 6. SOCIAL PROOF · MINI REVIEWS ────────────────────── -->
+<section class="section container">
+  <div class="section-head">
+    <span class="eyebrow">Cosa dicono i clienti</span>
+    <h2 class="serif">In sei righe, <em>la fiducia.</em></h2>
+    <p>Estratti dalle 487 recensioni verificate. Tre profili diversi, tre paesi diversi, una sola tendenza: zero pentimento dopo l'acquisto.</p>
+  </div>
+  <div class="mini-reviews">
+    <article class="mini-review feat">
+      <span class="verif-tag">Recensione verificata</span>
+      <div class="head">
+        <span class="av" style="background:#C04A1F">M</span>
+        <div class="ident">
+          <span class="nm">Marco T.</span>
+          <span class="ct">Milano · IT</span>
+        </div>
+      </div>
+      <span class="st">★★★★★</span>
+      <p class="quote">Dopo 3 anni con un Effeuno, finalmente una pizza che fa piangere mia madre napoletana. AVPN lo certifica, i miei ospiti lo confermano.</p>
+    </article>
+    <article class="mini-review">
+      <div class="head">
+        <span class="av" style="background:#445220">S</span>
+        <div class="ident">
+          <span class="nm">Sarah K.</span>
+          <span class="ct">Budapest · HU</span>
+        </div>
+      </div>
+      <span class="st">★★★★★</span>
+      <p class="quote">Ordered from Hungary, arrived in 6 days perfectly packed. The crust in 90 seconds is unreal — better than half the pizzerias here.</p>
+    </article>
+    <article class="mini-review">
+      <div class="head">
+        <span class="av" style="background:#7a4a2a">L</span>
+        <div class="ident">
+          <span class="nm">Luca P.</span>
+          <span class="ct">Roma · IT</span>
+        </div>
+      </div>
+      <span class="st">★★★★★</span>
+      <p class="quote">L'ho presa "per fare anche il pane". Ho fatto 4 pizzate in una settimana. Il pane lo proverò il mese prossimo, forse.</p>
+    </article>
+    <article class="mini-review">
+      <div class="head">
+        <span class="av" style="background:#3a6a9a">G</span>
+        <div class="ident">
+          <span class="nm">Giulia R.</span>
+          <span class="ct">Torino · IT</span>
+        </div>
+      </div>
+      <span class="st">★★★★★</span>
+      <p class="quote">Costruzione seria, niente plastichine. Il display PID dell'ADVANCED tiene la temperatura inchiodata anche quando apri lo sportello.</p>
+    </article>
+    <article class="mini-review">
+      <div class="head">
+        <span class="av" style="background:#8a5a3a">A</span>
+        <div class="ident">
+          <span class="nm">Andreas H.</span>
+          <span class="ct">München · DE</span>
+        </div>
+      </div>
+      <span class="st">★★★★<span style="opacity:.25">★</span></span>
+      <p class="quote">Quality is excellent. Manual was in Italian only in my batch but support sent the German PDF in 2 hours. Pizza is the best I've cooked at home.</p>
+    </article>
+    <article class="mini-review">
+      <div class="head">
+        <span class="av" style="background:#5b6e2c">C</span>
+        <div class="ident">
+          <span class="nm">Carlo D.</span>
+          <span class="ct">Napoli · IT</span>
+        </div>
+      </div>
+      <span class="st">★★★★★</span>
+      <p class="quote">Da napoletano: cuoce come quello di Sorbillo. Non è marketing — è la pietra Casapulla e le resistenze indipendenti. Lo consiglio a occhi chiusi.</p>
+    </article>
+  </div>
+</section>
+
+<!-- ─── 7. RECENSIONI ─────────────────────────────────────── -->
+<section class="section container" id="reviews">
+  <div class="section-head">
+    <span class="eyebrow">Recensioni verificate</span>
+    <h2 class="serif">Chi lo usa <em>ogni settimana.</em></h2>
+    <p>Le recensioni più recenti, complete delle foto inviate dai clienti dopo l'acquisto. Niente paywall, niente filtri: tutte qui dentro.</p>
+  </div>
+  <div class="reviews-wrap">
+    <div class="reviews-overview">
+      <span class="big serif">4.9</span>
+      <span class="of">/ 5</span>
+      <span class="stars-glyph">★★★★★</span>
+      <div class="total">basato su 487 recensioni verificate</div>
+      <div class="review-bars">
+        <div class="review-bar"><span>5★</span><span class="track"><span class="fill" style="width:91%"></span></span><span>443</span></div>
+        <div class="review-bar"><span>4★</span><span class="track"><span class="fill" style="width:6%"></span></span><span>32</span></div>
+        <div class="review-bar"><span>3★</span><span class="track"><span class="fill" style="width:2%"></span></span><span>9</span></div>
+        <div class="review-bar"><span>2★</span><span class="track"><span class="fill" style="width:1%"></span></span><span>2</span></div>
+        <div class="review-bar"><span>1★</span><span class="track"><span class="fill" style="width:0.4%"></span></span><span>1</span></div>
+      </div>
+    </div>
+    <div class="reviews-list">
+      <article class="review">
+        <div class="ph-photo">L</div>
+        <div>
+          <div class="head">
+            <div class="who">Lorenzo P.<span class="city">Bologna</span></div>
+            <div class="meta">
+              <span class="verified">✓ Acquisto verificato</span>
+              <span>12 marzo 2026</span>
+            </div>
+          </div>
+          <span class="stars-glyph">★★★★★</span>
+          <h4>La pizzeria è entrata in cucina.</h4>
+          <p>Ho avuto un Ooni Koda 16 per due anni. Lo vendo. Il Nettuno è un altro pianeta: 90 secondi reali, niente vento, niente bombola da cambiare. La pietra Casapulla fa la differenza sulla base.</p>
+          <div class="review-photos">
+            <div class="rp"></div><div class="rp"></div><div class="rp"></div>
+          </div>
+        </div>
+      </article>
+      <article class="review">
+        <div class="ph-photo">S</div>
+        <div>
+          <div class="head">
+            <div class="who">Sofia M.<span class="city">Torino</span></div>
+            <div class="meta">
+              <span class="verified">✓ Acquisto verificato</span>
+              <span>2 marzo 2026</span>
+            </div>
+          </div>
+          <span class="stars-glyph">★★★★★</span>
+          <h4>Assistenza che ti chiama lei.</h4>
+          <p>Ho avuto un problema con un termostato dopo 4 mesi. Mi hanno spedito il ricambio in 48 ore e mi hanno chiamato per spiegarmi al telefono come montarlo. 15 minuti, davvero. Non ne escono.</p>
+          <div class="review-photos">
+            <div class="rp"></div><div class="rp"></div>
+          </div>
+        </div>
+      </article>
+      <article class="review">
+        <div class="ph-photo">A</div>
+        <div>
+          <div class="head">
+            <div class="who">Andrea R.<span class="city">Napoli</span></div>
+            <div class="meta">
+              <span class="verified">✓ Acquisto verificato</span>
+              <span>18 febbraio 2026</span>
+            </div>
+          </div>
+          <span class="stars-glyph">★★★★★</span>
+          <h4>Da napoletano, ne capisco.</h4>
+          <p>Vivo a 200 metri da Sorbillo e mangio pizza tre volte a settimana. Con il Nettuno la cuocio uguale, alla stessa temperatura, con lo stesso tempo. La certificazione AVPN non è una decorazione: si vede nel cornicione.</p>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ─── 8. SCHEDA TECNICA PREMIUM ─────────────────────────── -->
+<section class="section container">
+  <div class="section-head">
+    <span class="eyebrow">Scheda tecnica</span>
+    <h2 class="serif">Tutto quello che<br><em>devi sapere.</em></h2>
+    <p>Una sola tabella, niente PDF da scaricare per le specifiche di base. Manuale completo e certificazioni firmate disponibili in fondo alla pagina.</p>
+  </div>
+  <div class="spec-premium">
+    <div class="sp-row">
+      <div><span class="ic-dot"></span> Temperatura massima</div>
+      <div>450 °C <span class="v-tag">Misurati FLIR</span></div>
+    </div>
+    <div class="sp-row">
+      <div><span class="ic-dot"></span> Tempo cottura pizza</div>
+      <div>90 secondi</div>
+    </div>
+    <div class="sp-row">
+      <div><span class="ic-dot"></span> Camera di cottura</div>
+      <div>Pietra refrattaria inclusa <span class="v-tag">Biscotto Casapulla</span></div>
+    </div>
+    <div class="sp-row">
+      <div><span class="ic-dot"></span> Potenza</div>
+      <div>Professionale da banco</div>
+    </div>
+    <div class="sp-row">
+      <div><span class="ic-dot"></span> Dimensioni imballo</div>
+      <div>60 × 53 × 47 cm</div>
+    </div>
+    <div class="sp-row">
+      <div><span class="ic-dot"></span> Peso</div>
+      <div>27–28 kg</div>
+    </div>
+    <div class="sp-row">
+      <div><span class="ic-dot"></span> Failure rate</div>
+      <div>0.2% <span class="v-tag">Su 12.000+ unità</span></div>
+    </div>
+    <div class="sp-row">
+      <div><span class="ic-dot"></span> Garanzia</div>
+      <div>2 anni · estendibile a 4 con MacteCare</div>
+    </div>
+    <div class="sp-row">
+      <div><span class="ic-dot"></span> Accessibilità componenti</div>
+      <div>Pannello posteriore · 15 min</div>
+    </div>
+    <div class="sp-row">
+      <div><span class="ic-dot"></span> Certificazione</div>
+      <div>AVPN <span class="v-tag">Verace Pizza Napoletana</span></div>
+    </div>
+    <div class="sp-row">
+      <div><span class="ic-dot"></span> Origine</div>
+      <div>Made in Italy · Montecorvino Rovella (SA)</div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── 9. CONFRONTO MODELLI ──────────────────────────────── -->
+<section class="section container">
+  <div class="section-head">
+    <span class="eyebrow">Confronto modelli</span>
+    <h2 class="serif">Standard o <em>ADVANCED?</em></h2>
+    <p>La differenza è il controllo della temperatura. Tutto il resto — pietra Casapulla, camera, certificazioni — è identico.</p>
+  </div>
+  <div class="compare">
+    <div class="compare-head">
+      <div class="col"></div>
+      <div class="col">
+        <div class="ph-mini"></div>
+        <div class="name serif">Nettuno</div>
+        <div class="price"><b>€ 749</b> <span style="color:var(--fg-3); font-size:13px">spedizione inclusa</span></div>
+      </div>
+      <div class="col featured">
+        <span class="star">Più venduto</span>
+        <div class="ph-mini"></div>
+        <div class="name serif">Nettuno <em>ADVANCED</em></div>
+        <div class="price"><b>€ 1.149</b> <span style="color:var(--fg-3); font-size:13px">spedizione inclusa</span></div>
+      </div>
+    </div>
+    <div class="compare-row">
+      <div class="cell label">Temperatura max</div>
+      <div class="cell">450 °C</div>
+      <div class="cell featured">450 °C + Autoboost</div>
+    </div>
+    <div class="compare-row">
+      <div class="cell label">Controllo temperatura</div>
+      <div class="cell">Doppio termostato</div>
+      <div class="cell featured">PID digitale</div>
+    </div>
+    <div class="compare-row">
+      <div class="cell label">Recupero termico</div>
+      <div class="cell">Standard</div>
+      <div class="cell featured">Immediato (&lt; 30 s)</div>
+    </div>
+    <div class="compare-row">
+      <div class="cell label">Display digitale</div>
+      <div class="cell"><span class="dash">—</span></div>
+      <div class="cell featured"><span class="check">✓</span></div>
+    </div>
+    <div class="compare-row">
+      <div class="cell label">Pietra Casapulla</div>
+      <div class="cell"><span class="check">✓</span></div>
+      <div class="cell featured"><span class="check">✓</span></div>
+    </div>
+    <div class="compare-row">
+      <div class="cell label">Certificazione AVPN</div>
+      <div class="cell"><span class="check">✓</span></div>
+      <div class="cell featured"><span class="check">✓</span></div>
+    </div>
+    <div class="compare-row">
+      <div class="cell label">Garanzia</div>
+      <div class="cell">2 anni</div>
+      <div class="cell featured">2 anni + MacteCare</div>
+    </div>
+    <div class="compare-row">
+      <div class="cell label"></div>
+      <div class="cell"><button class="btn btn-secondary" style="padding:10px 20px">Scegli Standard</button></div>
+      <div class="cell featured"><button class="btn btn-primary" style="padding:10px 20px">Scegli ADVANCED</button></div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── 10. FAQ ──────────────────────────────────────────── -->
+<section class="section container">
+  <div class="section-head">
+    <span class="eyebrow">Domande frequenti</span>
+    <h2 class="serif">Le 5 cose che ci chiedete <em>sempre</em>.</h2>
+    <p>Non trovi la risposta? Scrivici a hello@macteovens.com — rispondiamo entro 4 ore lavorative, sempre con una persona vera.</p>
+  </div>
+  <div class="faq">
+    <div class="faq-item open">
+      <div class="faq-q">Posso usarlo per fare anche il pane?<span class="plus">+</span></div>
+      <div class="faq-a"><div>Sì, e ne vale la pena. La doppia resistenza indipendente cielo/platea ti permette di abbassare il cielo a 220°C e tenere la platea più calda — esattamente il profilo termico che serve per pane, focacce, pizza in teglia e persino panettone. Il refrattario Casapulla mantiene la base croccante senza bruciarla.</div></div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Quanta corrente consuma?<span class="plus">+</span></div>
+      <div class="faq-a"><div>2.975 W a regime, presa Schuko domestica da 230V · 16A. In pratica: ~0,12 kWh per pizza una volta a temperatura. Un'infornata di 10 pizze costa meno di un caffè al bar. Nessun adeguamento di impianto richiesto.</div></div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Come funziona il pagamento in due rate?<span class="plus">+</span></div>
+      <div class="faq-a"><div>Al momento dell'ordine versi il 50% — € 374,50 per lo Standard, € 574,50 per l'ADVANCED. Riceverai conferma scritta dei tempi di produzione (5–7 giorni lavorativi). Il giorno prima della spedizione ti chiamiamo per il saldo, poi il corriere parte. Nessuna carta in archivio, niente addebiti automatici.</div></div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Arriva già pronto all'uso?<span class="plus">+</span></div>
+      <div class="faq-a"><div>Sì. Tiri fuori il forno dalla scatola, lo appoggi su un piano stabile (lascia 20 cm liberi su ogni lato), inserisci la pietra (arriva in due pezzi per sicurezza, prestazioni identiche), colleghi la Schuko. Pre-riscaldi 25 minuti la prima volta per stabilizzare la pietra e sei operativo. Nel pacco trovi anche il manuale in IT/EN/DE/FR e un buono per la pala da pizza in regalo.</div></div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">E se si rompe qualcosa?<span class="plus">+</span></div>
+      <div class="faq-a"><div>Il pannello posteriore si apre con 4 viti. Resistenze, ventola, termostato e display si sostituiscono in 15 minuti senza saldature. Ti spediamo il ricambio gratuitamente in garanzia (2 anni, estendibili a 4 con MacteCare) e ti chiamiamo per spiegarti il montaggio al telefono. Ricambi a magazzino per 10 anni dall'acquisto.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── 11. FINAL CTA ─────────────────────────────────────── -->
+<section class="container">
+  <div class="final-cta">
+    <div>
+      <span class="eyebrow">Pronto a infornare?</span>
+      <h2 class="serif">Acquista oggi.<br><em>Inforna venerdì.</em></h2>
+      <p>Spedizione 5–7 giorni lavorativi, 2 anni di garanzia, 30 giorni per restituirlo se non sei convinto. Niente clausole nascoste.</p>
+      <div class="final-cta-actions">
+        <button class="btn btn-primary btn-lg">Acquista Nettuno · € 749</button>
+        <button class="btn btn-secondary btn-lg">Parla con un consulente</button>
+      </div>
+    </div>
+    <div class="guarantees">
+      <div class="guarantee">
+        <span class="gnum serif">i.</span>
+        <div><b>Soddisfatto o rimborsato — 30 giorni</b><span>Reso gratuito, ritiriamo noi a casa tua.</span></div>
+      </div>
+      <div class="guarantee">
+        <span class="gnum serif">ii.</span>
+        <div><b>2 anni di garanzia · MacteCare opzionale</b><span>Estendi fino a 4 anni con assistenza prioritaria.</span></div>
+      </div>
+      <div class="guarantee">
+        <span class="gnum serif">iii.</span>
+        <div><b>Pagamento 50% / 50%, niente sorprese</b><span>Acconto all'ordine, saldo prima della spedizione.</span></div>
+      </div>
+      <div class="guarantee">
+        <span class="gnum serif">iv.</span>
+        <div><b>Assistenza umana, in italiano</b><span>Rispondiamo in 4 ore. Sempre una persona vera.</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── FOOTER ───────────────────────────────────────────── -->
+<footer>
+  <div class="container">
+    <div class="avpn-foot">
+      <div class="seal-big">
+        <div class="inner">
+          <b>AVPN</b>
+          <small>Verace Pizza Napoletana</small>
+        </div>
+      </div>
+      <div class="txt">
+        <b>Unico forno elettrico da banco certificato AVPN in questa fascia di prezzo.</b>
+        Macte Ovens è approvato dall'Associazione Verace Pizza Napoletana dopo 18 mesi di test sul cornicione, l'aspetto della platea e la profondità di cottura. Una sola garanzia: la stessa pizza che fanno a Napoli.
+      </div>
+    </div>
+    <div class="foot-mini">
+      <span>© 2026 Macte Ovens S.r.l. · Mockup concept, non commerciale</span>
+      <span>Montecorvino Rovella · 84096 Salerno · P.IVA 00000000000</span>
+    </div>
+  </div>
+</footer>
+
+<!-- ─── TOAST CONTAINER ─────────────────────────────────── -->
+<div class="toast-wrap" id="toast-wrap"></div>
+
+<script>
+  // ── Model selector
+  document.querySelectorAll(".model-opt").forEach(opt => {
+    opt.addEventListener("click", () => {
+      document.querySelectorAll(".model-opt").forEach(o => o.classList.remove("active"));
+      opt.classList.add("active");
+      const isAdv = opt.dataset.model === "advanced";
+      const priceLabel = isAdv ? "€ 1.149" : "€ 749";
+      document.getElementById("price-display").textContent = priceLabel;
+      document.querySelector(".price-old").textContent = isAdv ? "€ 1.349" : "€ 899";
+      const acconto = isAdv ? "574,50" : "374,50";
+      document.querySelector(".btn-primary.btn-lg").textContent = `Acquista — versa l'acconto di € ${acconto}`;
+      document.querySelector(".variant-head .value").textContent = isAdv ? "ADVANCED" : "Standard";
+      // Sync sticky bar
+      document.getElementById("sb-price").textContent = priceLabel;
+      const variantTxt = (isAdv ? "ADVANCED" : "Standard") + " · " + document.getElementById("color-name").textContent;
+      document.getElementById("sb-variant").textContent = variantTxt;
+    });
+  });
+
+  // ── Color selector
+  document.querySelectorAll(".color-opt").forEach(opt => {
+    opt.addEventListener("click", () => {
+      document.querySelectorAll(".color-opt").forEach(o => o.classList.remove("active"));
+      opt.classList.add("active");
+      const colorName = opt.dataset.color;
+      document.getElementById("color-name").textContent = colorName;
+      const model = document.querySelector(".model-opt.active").dataset.model === "advanced" ? "ADVANCED" : "Standard";
+      document.getElementById("sb-variant").textContent = model + " · " + colorName;
+    });
+  });
+
+  // ── Thumb selector
+  document.querySelectorAll(".thumb").forEach(t => {
+    t.addEventListener("click", () => {
+      document.querySelectorAll(".thumb").forEach(o => o.classList.remove("active"));
+      t.classList.add("active");
+    });
+  });
+
+  // ── FAQ
+  document.querySelectorAll(".faq-item").forEach(item => {
+    item.addEventListener("click", () => {
+      const wasOpen = item.classList.contains("open");
+      document.querySelectorAll(".faq-item").forEach(i => i.classList.remove("open"));
+      if (!wasOpen) item.classList.add("open");
+    });
+  });
+
+  // ── Sticky add-to-cart bar (compare oltre hero)
+  const stickybar = document.getElementById("stickybar");
+  const hero = document.getElementById("buy");
+  function onScroll() {
+    const heroBottom = hero.getBoundingClientRect().bottom;
+    if (heroBottom < 0) {
+      stickybar.classList.add("show");
+    } else {
+      stickybar.classList.remove("show");
+    }
+  }
+  window.addEventListener("scroll", onScroll, { passive: true });
+  onScroll();
+
+  // ── Viewer count (simulato, fluttuante)
+  const viewersEl = document.getElementById("viewers-num");
+  let viewers = 12;
+  setInterval(() => {
+    // ±1, range 8–18
+    const delta = Math.random() < 0.5 ? -1 : 1;
+    viewers = Math.max(8, Math.min(18, viewers + delta));
+    if (viewersEl) viewersEl.textContent = viewers;
+  }, 8000);
+
+  // ── Toast notification (social proof live)
+  const purchases = [
+    { name: "Marco", city: "Milano", letter: "M", color: "#C04A1F" },
+    { name: "Giulia", city: "Torino", letter: "G", color: "#445220" },
+    { name: "Alessio", city: "Roma", letter: "A", color: "#7a4a2a" },
+    { name: "Sarah", city: "Budapest", letter: "S", color: "#3a6a9a" },
+    { name: "Luca", city: "Napoli", letter: "L", color: "#5b6e2c" },
+    { name: "Elena", city: "Palermo", letter: "E", color: "#8a5a3a" },
+    { name: "Andreas", city: "München", letter: "A", color: "#445220" },
+    { name: "Federica", city: "Bologna", letter: "F", color: "#C04A1F" },
+  ];
+  const timeOptions = ["pochi istanti fa", "2 minuti fa", "5 minuti fa", "8 minuti fa"];
+  const products = ["il Nettuno", "il Nettuno", "il Nettuno ADVANCED"];
+
+  function showToast() {
+    const p = purchases[Math.floor(Math.random() * purchases.length)];
+    const t = timeOptions[Math.floor(Math.random() * timeOptions.length)];
+    const pr = products[Math.floor(Math.random() * products.length)];
+    const toast = document.createElement("div");
+    toast.className = "toast";
+    toast.innerHTML = `
+      <span class="av-toast" style="background:${p.color}">${p.letter}</span>
+      <div class="tx">
+        <b>${p.name} da ${p.city}</b> ha appena acquistato ${pr}
+        <small>${t} · acquisto verificato</small>
+      </div>
+    `;
+    document.getElementById("toast-wrap").appendChild(toast);
+    requestAnimationFrame(() => toast.classList.add("in"));
+    setTimeout(() => {
+      toast.classList.remove("in");
+      setTimeout(() => toast.remove(), 400);
+    }, 5500);
+  }
+  // primo toast dopo 8s, poi ogni 45s
+  setTimeout(() => {
+    showToast();
+    setInterval(showToast, 45000);
+  }, 8000);
+</script>
+</body>
+</html>
