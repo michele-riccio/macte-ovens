@@ -411,7 +411,134 @@ h3.ss{font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--m
     <div class="box gold"><strong>La legge che emerge dai dati:</strong> il formato carosello con recensioni rende in media <strong>4.12x</strong>. I reel video rendono <strong>3.41x</strong>. I video "istituzionali" o gli spot interi rendono appena <strong>1x</strong> o meno. Il contenuto che convince non è quello più prodotto: è quello più autentico e specifico.</div>
 
     <!-- PROBLEMA 5: IL GRANDE SPRECO -->
-    <div class="dark" style="margin-top:2rem">
+    <div      <!-- FUNNEL COMPLETO -->
+      <h2 class="sh" style="margin-top:3.5rem">Dove si perdono le persone: il funnel reale</h2>
+      <p style="font-size:14px;color:var(--muted);margin-bottom:1.5rem">Ogni 10.000 persone che vedono un annuncio Macte, quante arrivano all'acquisto? Questo è il percorso reale, passo per passo.</p>
+      <div style="display:flex;flex-direction:column;gap:0;margin-bottom:1.5rem">
+        <div style="display:grid;grid-template-columns:160px 1fr 80px;gap:1rem;align-items:center;padding:.9rem 1.5rem;background:var(--warm);border-bottom:1px solid var(--sand)">
+          <span style="font-size:12px;font-weight:500">Vedono l'annuncio</span>
+          <div style="height:8px;background:rgba(0,0,0,.06);border-radius:4px"><div style="height:100%;width:100%;background:var(--olive);border-radius:4px"></div></div>
+          <span style="font-family:'Fraunces',serif;font-size:1.3rem;font-weight:600;text-align:right;color:var(--olive)">10.000</span>
+        </div>
+        <div style="display:grid;grid-template-columns:160px 1fr 80px;gap:1rem;align-items:center;padding:.9rem 1.5rem;background:var(--paper);border-bottom:1px solid var(--sand)">
+          <span style="font-size:12px;font-weight:500">Cliccano il link</span>
+          <div style="height:8px;background:rgba(0,0,0,.06);border-radius:4px"><div style="height:100%;width:40%;background:var(--olive-s);border-radius:4px"></div></div>
+          <span style="font-family:'Fraunces',serif;font-size:1.3rem;font-weight:600;text-align:right;color:var(--olive-s)">~400</span>
+        </div>
+        <div style="display:grid;grid-template-columns:160px 1fr 80px;gap:1rem;align-items:center;padding:.9rem 1.5rem;background:var(--warm);border-bottom:1px solid var(--sand)">
+          <span style="font-size:12px;font-weight:500">Aggiungono al carrello</span>
+          <div style="height:8px;background:rgba(0,0,0,.06);border-radius:4px"><div style="height:100%;width:14%;background:var(--gold);border-radius:4px"></div></div>
+          <span style="font-family:'Fraunces',serif;font-size:1.3rem;font-weight:600;text-align:right;color:var(--gold)">~24</span>
+        </div>
+        <div style="display:grid;grid-template-columns:160px 1fr 80px;gap:1rem;align-items:center;padding:.9rem 1.5rem;background:var(--paper)">
+          <span style="font-size:12px;font-weight:500">Completano l'acquisto</span>
+          <div style="height:8px;background:rgba(0,0,0,.06);border-radius:4px"><div style="height:100%;width:2.5%;background:var(--rust);border-radius:4px"></div></div>
+          <span style="font-family:'Fraunces',serif;font-size:1.3rem;font-weight:600;text-align:right;color:var(--rust)">&lt;1</span>
+        </div>
+      </div>
+      <div class="box rust">Su 10.000 persone che vedono l'ads, <strong>meno di 1 compra</strong>. Il collo di bottiglia non è la pubblicità: è il passaggio dal carrello all'acquisto. Lì si gioca il 98% della partita.</div>
+
+      <!-- BENCHMARK -->
+      <h2 class="sh" style="margin-top:3.5rem">Dove sei, dove potresti essere</h2>
+      <p style="font-size:14px;color:var(--muted);margin-bottom:1.25rem">Un confronto tra la situazione attuale e i numeri già raggiunti con lo stesso account, nello stesso mercato.</p>
+      <div style="overflow-x:auto;margin-bottom:.75rem">
+        <table style="width:100%;border-collapse:collapse;font-size:13px;min-width:480px">
+          <thead><tr style="background:var(--ink);color:var(--cream)">
+            <th style="padding:10px 14px;text-align:left;font-size:9px;letter-spacing:.14em;text-transform:uppercase;font-weight:500">Scenario</th>
+            <th style="padding:10px 14px;text-align:center;font-size:9px;letter-spacing:.14em;text-transform:uppercase;font-weight:500">ROAS</th>
+            <th style="padding:10px 14px;text-align:center;font-size:9px;letter-spacing:.14em;text-transform:uppercase;font-weight:500">Costo per vendita</th>
+            <th style="padding:10px 14px;text-align:center;font-size:9px;letter-spacing:.14em;text-transform:uppercase;font-weight:500">Fatturato su €1.500/mese</th>
+          </tr></thead>
+          <tbody>
+            <tr style="background:rgba(192,74,31,.06);border-bottom:1px solid var(--sand)">
+              <td style="padding:11px 14px"><strong>Macte oggi (2026)</strong><br><span style="font-size:11px;color:var(--muted)">Situazione attuale</span></td>
+              <td style="padding:11px 14px;text-align:center;font-family:'Fraunces',serif;font-size:1.3rem;font-weight:600;color:var(--rust)">1.27x</td>
+              <td style="padding:11px 14px;text-align:center;color:var(--rust)">€536</td>
+              <td style="padding:11px 14px;text-align:center;color:var(--rust)">€1.905</td>
+            </tr>
+            <tr style="background:var(--warm);border-bottom:1px solid var(--sand)">
+              <td style="padding:11px 14px"><strong>Benchmark e-commerce premium</strong><br><span style="font-size:11px;color:var(--muted)">Media settore food/HoReCa</span></td>
+              <td style="padding:11px 14px;text-align:center;font-family:'Fraunces',serif;font-size:1.3rem;font-weight:600;color:var(--gold)">3–5x</td>
+              <td style="padding:11px 14px;text-align:center;color:var(--gold)">€140–230</td>
+              <td style="padding:11px 14px;text-align:center;color:var(--gold)">€4.500–7.500</td>
+            </tr>
+            <tr style="background:rgba(68,82,32,.07)">
+              <td style="padding:11px 14px"><strong>Macte al suo meglio (IT · Nov 2025)</strong><br><span style="font-size:11px;color:var(--muted)">Dati reali del tuo account</span></td>
+              <td style="padding:11px 14px;text-align:center;font-family:'Fraunces',serif;font-size:1.3rem;font-weight:600;color:var(--olive)">7–9x</td>
+              <td style="padding:11px 14px;text-align:center;color:var(--olive)">€75–95</td>
+              <td style="padding:11px 14px;text-align:center;color:var(--olive)">€10.500–13.500</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p style="font-size:12px;color:var(--muted);margin-bottom:2rem">Il ROAS 7–9x non è un obiettivo teorico: è già successo più volte con lo stesso account. L'obiettivo è riportarcelo sistematicamente.</p>
+
+      <!-- COSTO DELL'INAZIONE -->
+      <div style="background:var(--ink);color:var(--cream);padding:2.5rem 3rem;margin-bottom:2.5rem;position:relative;overflow:hidden">
+        <div style="position:absolute;right:-1rem;top:-2rem;font-family:'Fraunces',serif;font-size:9rem;font-weight:700;color:rgba(255,255,255,.03);line-height:1;pointer-events:none">€</div>
+        <p style="font-family:'Fraunces',serif;font-style:italic;color:var(--rust-s);font-size:.9rem;margin-bottom:.7rem">Il costo dell'inazione</p>
+        <h3 style="font-family:'Fraunces',serif;font-size:clamp(1.4rem,2.5vw,2rem);font-weight:500;line-height:1.1;margin-bottom:1.5rem;max-width:580px">Ogni mese al ROAS attuale, Macte lascia sul tavolo <em style="color:var(--rust-s)">circa €3.900</em> di fatturato.</h3>
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-bottom:1.25rem">
+          <div style="border:1px solid rgba(245,241,234,.1);padding:1rem">
+            <p style="font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:rgba(245,241,234,.35);margin-bottom:.4rem">Oggi · ROAS 1.27x</p>
+            <p style="font-family:'Fraunces',serif;font-size:1.6rem;font-weight:600;color:var(--rust-s)">€1.905</p>
+            <p style="font-size:10.5px;color:rgba(245,241,234,.35);margin-top:3px">Su €1.500 di budget</p>
+          </div>
+          <div style="border:1px solid rgba(245,241,234,.1);padding:1rem">
+            <p style="font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:rgba(245,241,234,.35);margin-bottom:.4rem">Con obiettivo corretto · 3.87x</p>
+            <p style="font-family:'Fraunces',serif;font-size:1.6rem;font-weight:600;color:var(--olive-s)">€5.805</p>
+            <p style="font-size:10.5px;color:rgba(245,241,234,.35);margin-top:3px">Stesso identico budget</p>
+          </div>
+          <div style="border:1px solid rgba(245,241,234,.15);background:rgba(192,74,31,.12);padding:1rem">
+            <p style="font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:rgba(245,241,234,.35);margin-bottom:.4rem">Differenza mensile</p>
+            <p style="font-family:'Fraunces',serif;font-size:1.6rem;font-weight:600;color:var(--rust-s)">–€3.900</p>
+            <p style="font-size:10.5px;color:rgba(245,241,234,.35);margin-top:3px">Circa €46.800 l'anno</p>
+          </div>
+        </div>
+        <p style="font-size:11.5px;color:rgba(245,241,234,.45);max-width:540px">Calcolo conservativo, senza recupero carrelli Spochi né ottimizzazione sito. Con entrambi il delta annuo stimato supera i €180.000.</p>
+      </div>
+
+      <!-- CALENDARIO STAGIONALE -->
+      <h2 class="sh">Quando spingere, quando risparmiare</h2>
+      <p style="font-size:14px;color:var(--muted);margin-bottom:1.25rem">17 mesi di dati condensati in un calendario operativo. Non sono previsioni: sono i risultati reali del tuo account.</p>
+
+      <div style="background:var(--warm);border:1px solid var(--sand);padding:1.25rem 1.5rem;margin-bottom:1.5rem;display:grid;grid-template-columns:auto 1fr;gap:1rem;align-items:start">
+        <div style="font-size:1.6rem;line-height:1;padding-top:2px">📖</div>
+        <div>
+          <p style="font-size:12px;font-weight:600;margin-bottom:.4rem;color:var(--ink)">Come leggere questo calendario</p>
+          <p style="font-size:12.5px;color:var(--muted);line-height:1.65">Ogni casella è un mese reale. Il numero che vedi (es. <strong style="color:var(--olive)">5.22x</strong>) è il ROAS di quel periodo: significa che per ogni euro investito in ads ne sono tornati 5,22 di fatturato. <strong style="color:var(--olive)">Verde</strong> = mese profittevole, spingere il budget. <strong style="color:var(--gold)">Giallo</strong> = mese positivo ma non ottimale, mantenere senza tagliare. <strong style="color:var(--rust)">Rosso</strong> = mese in perdita o break-even, ridurre ma non spegnere. <strong style="color:var(--sand)">Grigio tratteggiato</strong> = account spento: il problema non è il risultato di quel mese, è che ogni pausa fa ripartire l'algoritmo da zero.</p>
+        </div>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(6,1fr);gap:6px;margin-bottom:.75rem">
+        <div style="grid-column:1/-1;font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);padding:3px 0;border-bottom:1px solid var(--sand);margin-bottom:2px">2025</div>
+        <div style="background:rgba(192,74,31,.1);border:1px solid rgba(192,74,31,.2);padding:.75rem .4rem;text-align:center;border-radius:3px"><p style="font-size:8.5px;text-transform:uppercase;color:var(--muted);margin-bottom:3px">Gen</p><p style="font-family:'Fraunces',serif;font-size:1rem;font-weight:600;color:var(--rust)">0x</p><p style="font-size:8px;color:var(--muted);margin-top:2px">Obiettivo sbagliato</p></div>
+        <div style="background:rgba(192,74,31,.1);border:1px solid rgba(192,74,31,.2);padding:.75rem .4rem;text-align:center;border-radius:3px"><p style="font-size:8.5px;text-transform:uppercase;color:var(--muted);margin-bottom:3px">Feb</p><p style="font-family:'Fraunces',serif;font-size:1rem;font-weight:600;color:var(--rust)">0.96x</p><p style="font-size:8px;color:var(--muted);margin-top:2px">Break-even</p></div>
+        <div style="background:rgba(168,131,26,.09);border:1px solid rgba(168,131,26,.22);padding:.75rem .4rem;text-align:center;border-radius:3px"><p style="font-size:8.5px;text-transform:uppercase;color:var(--muted);margin-bottom:3px">Mar</p><p style="font-family:'Fraunces',serif;font-size:1rem;font-weight:600;color:var(--gold)">1.99x</p><p style="font-size:8px;color:var(--muted);margin-top:2px">In crescita</p></div>
+        <div style="background:rgba(68,82,32,.12);border:2px solid var(--olive);padding:.75rem .4rem;text-align:center;border-radius:3px"><p style="font-size:8.5px;text-transform:uppercase;color:var(--olive);font-weight:600;margin-bottom:3px">Apr</p><p style="font-family:'Fraunces',serif;font-size:1rem;font-weight:600;color:var(--olive)">5.22x</p><p style="font-size:8px;color:var(--olive);font-weight:600;margin-top:2px">Pasqua 🔥</p></div>
+        <div style="background:rgba(192,74,31,.1);border:1px solid rgba(192,74,31,.2);padding:.75rem .4rem;text-align:center;border-radius:3px"><p style="font-size:8.5px;text-transform:uppercase;color:var(--muted);margin-bottom:3px">Mag</p><p style="font-family:'Fraunces',serif;font-size:1rem;font-weight:600;color:var(--rust)">0.70x</p><p style="font-size:8px;color:var(--muted);margin-top:2px">Calo post Pasqua</p></div>
+        <div style="background:rgba(192,74,31,.07);border:1px solid rgba(192,74,31,.15);padding:.75rem .4rem;text-align:center;border-radius:3px"><p style="font-size:8.5px;text-transform:uppercase;color:var(--muted);margin-bottom:3px">Giu–Lug</p><p style="font-family:'Fraunces',serif;font-size:1rem;font-weight:600;color:var(--rust)">0x</p><p style="font-size:8px;color:var(--muted);margin-top:2px">No conversioni</p></div>
+
+        <div style="grid-column:1/-1;font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);padding:3px 0;border-bottom:1px solid var(--sand);margin:4px 0 2px">continua 2025</div>
+        <div style="background:var(--warm);border:1.5px dashed var(--sand);padding:.75rem .4rem;text-align:center;border-radius:3px"><p style="font-size:8.5px;text-transform:uppercase;color:var(--sand);margin-bottom:3px">Ago–Set</p><p style="font-family:'Fraunces',serif;font-size:1rem;font-weight:600;color:var(--sand)">STOP</p><p style="font-size:8px;color:var(--sand);margin-top:2px">Account spento</p></div>
+        <div style="background:rgba(168,131,26,.09);border:1px solid rgba(168,131,26,.22);padding:.75rem .4rem;text-align:center;border-radius:3px"><p style="font-size:8.5px;text-transform:uppercase;color:var(--muted);margin-bottom:3px">Ott</p><p style="font-family:'Fraunces',serif;font-size:1rem;font-weight:600;color:var(--gold)">3.32x</p><p style="font-size:8px;color:var(--muted);margin-top:2px">Ripartenza lenta</p></div>
+        <div style="background:rgba(68,82,32,.16);border:2px solid var(--olive);padding:.75rem .4rem;text-align:center;border-radius:3px"><p style="font-size:8.5px;text-transform:uppercase;color:var(--olive);font-weight:600;margin-bottom:3px">Nov</p><p style="font-family:'Fraunces',serif;font-size:1rem;font-weight:600;color:var(--olive)">5.87x</p><p style="font-size:8px;color:var(--olive);font-weight:600;margin-top:2px">Black Friday 🏆</p></div>
+        <div style="background:rgba(192,74,31,.1);border:1px solid rgba(192,74,31,.2);padding:.75rem .4rem;text-align:center;border-radius:3px"><p style="font-size:8.5px;text-transform:uppercase;color:var(--muted);margin-bottom:3px">Dic</p><p style="font-family:'Fraunces',serif;font-size:1rem;font-weight:600;color:var(--rust)">0.55x</p><p style="font-size:8px;color:var(--muted);margin-top:2px">Fatica post BF</p></div>
+        <div style="opacity:0"></div><div style="opacity:0"></div>
+
+        <div style="grid-column:1/-1;font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);padding:3px 0;border-bottom:1px solid var(--sand);margin:4px 0 2px">2026 (fino a maggio)</div>
+        <div style="background:var(--warm);border:1.5px dashed var(--sand);padding:.75rem .4rem;text-align:center;border-radius:3px"><p style="font-size:8.5px;text-transform:uppercase;color:var(--sand);margin-bottom:3px">Gen–Feb</p><p style="font-family:'Fraunces',serif;font-size:1rem;font-weight:600;color:var(--sand)">STOP</p><p style="font-size:8px;color:var(--sand);margin-top:2px">Pausa</p></div>
+        <div style="background:rgba(168,131,26,.09);border:1px solid rgba(168,131,26,.22);padding:.75rem .4rem;text-align:center;border-radius:3px"><p style="font-size:8.5px;text-transform:uppercase;color:var(--muted);margin-bottom:3px">Mar</p><p style="font-family:'Fraunces',serif;font-size:1rem;font-weight:600;color:var(--gold)">2.01x</p><p style="font-size:8px;color:var(--muted);margin-top:2px">Ripartenza</p></div>
+        <div style="background:rgba(68,82,32,.1);border:1px solid rgba(68,82,32,.28);padding:.75rem .4rem;text-align:center;border-radius:3px"><p style="font-size:8.5px;text-transform:uppercase;color:var(--muted);margin-bottom:3px">Apr</p><p style="font-family:'Fraunces',serif;font-size:1rem;font-weight:600;color:var(--olive)">3.91x</p><p style="font-size:8px;color:var(--olive);font-weight:600;margin-top:2px">Pasqua ok</p></div>
+        <div style="background:rgba(192,74,31,.12);border:1.5px solid var(--rust);padding:.75rem .4rem;text-align:center;border-radius:3px"><p style="font-size:8.5px;text-transform:uppercase;color:var(--rust);font-weight:600;margin-bottom:3px">Mag</p><p style="font-family:'Fraunces',serif;font-size:1rem;font-weight:600;color:var(--rust)">0.88x</p><p style="font-size:8px;color:var(--rust);font-weight:600;margin-top:2px">In perdita ⚠️</p></div>
+        <div style="opacity:0"></div><div style="opacity:0"></div>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:2rem">
+        <div style="background:rgba(68,82,32,.07);border-left:3px solid var(--olive);padding:.85rem 1rem;font-size:12px"><strong style="color:var(--olive)">Mesi da spingere</strong><br><span style="color:var(--muted)">Aprile, Ottobre, Novembre. Budget massimo, creatività fresche.</span></div>
+        <div style="background:rgba(168,131,26,.06);border-left:3px solid var(--gold);padding:.85rem 1rem;font-size:12px"><strong style="color:var(--gold)">Mesi da mantenere</strong><br><span style="color:var(--muted)">Marzo, Settembre. Budget minimo per non perdere l'apprendimento.</span></div>
+        <div style="background:rgba(192,74,31,.05);border-left:3px solid var(--rust);padding:.85rem 1rem;font-size:12px"><strong style="color:var(--rust)">Mesi da ridurre</strong><br><span style="color:var(--muted)">Giu–Ago, Dic. Budget al minimo — mai zero. Le pause costano più di quanto risparmiano.</span></div>
+      </div>
+
+ <div class="dark" style="margin-top:0rem">
       <p class="pre">Il problema più grande di tutti</p>
       <h3>Il sito riceve traffico interessato.<br>Ma non lo trasforma in <em>clienti.</em></h3>
       <p>Su 4.078 persone che hanno aggiunto il forno al carrello negli ultimi 17 mesi, solo 76 hanno completato l'acquisto. Il 98% se ne va. Non è un problema di pubblicità: è un problema di pagina. Risolverlo è la leva con il ritorno più alto di tutto il progetto.</p>
