@@ -1,0 +1,1040 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Macte Ovens × Ribrain – Presentazione Strategica</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink:#0E0E0E; --cream:#F5F1EA; --paper:#FAF7F2; --rust:#C04A1F;
+  --rust-s:#E89878; --olive:#445220; --olive-s:#8EA84C; --gold:#A8831A;
+  --sand:#D4C9AE; --warm:#EDE5D0; --muted:#7A7060; --bg2:#F0EBE0;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{font-size:15.5px;scroll-behavior:smooth;overscroll-behavior:none;-webkit-font-smoothing:antialiased}
+body{font-family:'Inter',sans-serif;background:var(--paper);color:var(--ink);line-height:1.6;cursor:none;overscroll-behavior:none}
+@media(hover:none){body{cursor:auto}#cur{display:none}}
+
+/* LOADER */
+#loader{position:fixed;inset:0;z-index:10000;background:var(--ink);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1.25rem;transition:opacity .8s cubic-bezier(.16,1,.3,1),visibility .8s}
+#loader.is-out{opacity:0;visibility:hidden;pointer-events:none}
+.ldr-mark{font-family:'Fraunces',serif;font-size:2.8rem;font-weight:500;color:rgba(245,241,234,.75);letter-spacing:-.03em;line-height:1;display:flex;align-items:center;gap:.5rem}
+.ldr-mark .ldr-x{color:var(--rust);font-style:italic;font-size:2rem;opacity:.7}
+.ldr-mark .ldr-sub{font-size:1.2rem;font-weight:400;color:rgba(245,241,234,.4);font-style:italic}
+.ldr-bar{width:120px;height:1px;background:rgba(245,241,234,.08);overflow:hidden;border-radius:1px}
+.ldr-bar::after{content:'';display:block;height:100%;background:var(--rust);transform:scaleX(0);transform-origin:left;animation:ldrFill 1.2s cubic-bezier(.65,0,.35,1) forwards .15s}
+@keyframes ldrFill{to{transform:scaleX(1)}}
+.ldr-cap{font-family:'Inter',sans-serif;font-size:9px;letter-spacing:.22em;text-transform:uppercase;color:rgba(245,241,234,.2)}
+
+/* CURSOR */
+#cur{position:fixed;width:8px;height:8px;background:var(--rust);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);mix-blend-mode:difference;transition:width .18s,height .18s;top:0;left:0}
+
+/* NAV */
+.nav{position:sticky;top:0;z-index:100;background:var(--ink);color:var(--cream);padding:.65rem 2rem;display:flex;justify-content:space-between;align-items:center}
+.nav-brand{font-family:'Fraunces',serif;font-size:.95rem;font-weight:600;letter-spacing:.02em}
+.nav-links{display:flex}
+.nav-links a{color:rgba(245,241,234,.45);text-decoration:none;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;padding:.45rem 1rem;transition:color .2s}
+.nav-links a:hover,.nav-links a.on{color:var(--rust-s)}
+
+/* PAGE */
+.pg{padding:4.5rem 2rem 5rem}
+.pw{max-width:1020px;margin:0 auto;width:100%}
+
+/* LABEL */
+.pg-lbl{display:flex;align-items:center;gap:1rem;margin-bottom:2rem;font-size:9.5px;letter-spacing:.25em;text-transform:uppercase;color:var(--muted)}
+.pg-lbl .n{font-family:'Fraunces',serif;font-size:2.5rem;font-weight:600;color:var(--ink);line-height:1;letter-spacing:0}
+.pg-lbl .ln{flex:1;height:1px;background:var(--sand)}
+
+/* HEADINGS */
+h1.pt{font-family:'Fraunces',serif;font-size:clamp(2.4rem,5vw,4rem);font-weight:500;line-height:1.02;letter-spacing:-.01em;margin-bottom:.9rem}
+h1.pt em{font-style:italic;color:var(--rust)}
+.pl{font-size:1.08rem;color:var(--muted);max-width:600px;margin-bottom:2.75rem}
+h2.sh{font-family:'Fraunces',serif;font-size:1.7rem;font-weight:600;margin-bottom:1.1rem;line-height:1.15}
+h3.ss{font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);font-weight:600;margin:2rem 0 .85rem}
+
+/* COVER */
+.cover{background:var(--ink);color:var(--cream);position:relative;overflow:hidden;min-height:100vh;display:flex;flex-direction:column;justify-content:center}
+.cover::after{content:'MACTE';position:absolute;right:-3rem;bottom:-2.5rem;font-family:'Fraunces',serif;font-size:18rem;font-weight:700;color:rgba(255,255,255,.025);line-height:1;pointer-events:none;letter-spacing:-.05em}
+.cover .pw{position:relative;z-index:2}
+.cv-pre{font-family:'Fraunces',serif;font-size:.95rem;font-style:italic;color:var(--rust-s);margin-bottom:2rem}
+.cover h1{font-family:'Fraunces',serif;font-size:clamp(4rem,9vw,8rem);font-weight:500;line-height:.93;letter-spacing:-.02em;margin-bottom:1.5rem}
+.cover h1 em{font-style:italic;color:var(--rust-s)}
+.cv-sub{font-size:1.15rem;color:rgba(245,241,234,.58);max-width:520px;margin-bottom:4rem}
+.cv-meta{display:flex;gap:3rem;flex-wrap:wrap;padding-top:2rem;border-top:1px solid rgba(245,241,234,.12)}
+.cv-item .l{font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:rgba(245,241,234,.35);margin-bottom:3px}
+.cv-item .v{font-size:13.5px;font-weight:500}
+
+/* KPI ROW */
+.krow{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:1px;background:var(--sand);border:1px solid var(--sand);margin-bottom:1.5rem}
+.kc{background:var(--paper);padding:1.1rem 1rem}
+.kc .l{font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:4px}
+.kc .v{font-family:'Fraunces',serif;font-size:2rem;font-weight:600;line-height:1}
+.kc .s{font-size:10.5px;color:var(--muted);margin-top:4px}
+.r{color:var(--rust)}.g{color:var(--olive)}.go{color:var(--gold)}
+
+/* CALLOUT BOXES */
+.box{padding:1.5rem 2rem;margin:1.25rem 0;font-size:13.5px;line-height:1.65}
+.box.gold{border-left:3px solid var(--gold);background:rgba(168,131,26,.07)}
+.box.gold strong{color:var(--gold)}
+.box.rust{border-left:3px solid var(--rust);background:rgba(192,74,31,.05)}
+.box.rust strong{color:var(--rust)}
+.box.olive{border-left:3px solid var(--olive);background:rgba(68,82,32,.05)}
+.box.olive strong{color:var(--olive)}
+
+/* HERO DARK */
+.dark{background:var(--ink);color:var(--cream);padding:2.75rem 3rem;margin:1.75rem 0;position:relative;overflow:hidden}
+.dark::before{content:'';position:absolute;right:-80px;top:-80px;width:300px;height:300px;border-radius:50%;background:radial-gradient(circle,rgba(192,74,31,.3) 0%,transparent 70%);pointer-events:none}
+.dark .pre{font-family:'Fraunces',serif;font-style:italic;color:var(--rust-s);font-size:.9rem;margin-bottom:.6rem}
+.dark h3{font-family:'Fraunces',serif;font-size:clamp(1.6rem,3vw,2.4rem);font-weight:500;line-height:1.1;margin-bottom:1rem}
+.dark h3 em{font-style:italic;color:var(--rust-s)}
+.dark p{font-size:13.5px;color:rgba(245,241,234,.6);max-width:580px;line-height:1.65}
+.dark .sc-row{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:1.75rem}
+.dark .sc{border:1px solid rgba(245,241,234,.14);padding:1.1rem}
+.dark .sc .sl{font-size:9.5px;color:rgba(245,241,234,.4);margin-bottom:4px;text-transform:uppercase;letter-spacing:.1em}
+.dark .sc .sv{font-family:'Fraunces',serif;font-size:1.8rem;font-weight:600;color:var(--olive-s)}
+.dark .sc .ss{font-size:10.5px;color:rgba(245,241,234,.4);margin-top:2px}
+
+/* CHART */
+.ch-block{background:var(--warm);padding:2rem;margin:1.75rem 0}
+.ch-block .cht{font-family:'Fraunces',serif;font-size:1.25rem;font-weight:600;margin-bottom:.35rem}
+.ch-block .chs{font-size:12.5px;color:var(--muted);margin-bottom:1.5rem}
+.ch{position:relative;width:100%}
+
+/* WASTE CARDS */
+.waste-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem;margin:1.25rem 0}
+.wc{background:var(--paper);border:1.5px solid var(--sand);padding:1.25rem}
+.wc.bad{border-color:rgba(192,74,31,.4)}
+.wc.ok{border-color:rgba(68,82,32,.4)}
+.wc .wt{font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:.6rem}
+.wc .wv{font-family:'Fraunces',serif;font-size:2.2rem;font-weight:600;line-height:1;margin-bottom:.35rem}
+.wc .wl{font-size:12px;color:var(--muted);line-height:1.5}
+
+/* CREATIVE FINDING */
+.finding{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem;margin:1.25rem 0}
+.fc{padding:1.4rem 1.75rem;border:1px solid var(--sand)}
+.fc.star{background:var(--ink);color:var(--cream);border-color:var(--ink)}
+.fc .ft{font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:.5rem}
+.fc.star .ft{color:rgba(245,241,234,.4)}
+.fc h4{font-family:'Fraunces',serif;font-size:1.35rem;font-weight:600;margin-bottom:.5rem}
+.fc p{font-size:12.5px;color:var(--muted);line-height:1.55}
+.fc.star p{color:rgba(245,241,234,.65)}
+.fc .fv{font-family:'Fraunces',serif;font-size:2.2rem;font-weight:600;line-height:1;margin:1rem 0 .35rem}
+
+/* CALENDAR STRIP */
+.calendar{display:grid;grid-template-columns:repeat(13,1fr);gap:3px;margin:1.25rem 0}
+.cal-month{display:flex;flex-direction:column;align-items:center;gap:4px}
+.cal-month .cm-l{font-size:8.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);text-align:center}
+.cal-month .cm-b{width:100%;height:44px;border-radius:3px;display:flex;align-items:center;justify-content:center;font-family:'Fraunces',serif;font-size:.85rem;font-weight:600;color:var(--paper)}
+.cal-month .cm-b.paused{background:var(--warm);border:1.5px dashed var(--sand);color:var(--sand)}
+.cal-month .cm-b.bad{background:rgba(192,74,31,.7)}
+.cal-month .cm-b.med{background:var(--gold)}
+.cal-month .cm-b.ok{background:var(--olive-s)}
+.cal-month .cm-b.good{background:var(--olive)}
+
+/* 2-col */
+.two{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem}
+
+/* STRATEGY PAGE */
+.stpg{background:var(--cream)}
+.ph-card{background:var(--paper);border:1px solid var(--sand);padding:2rem 2.5rem;margin-bottom:1.5rem}
+.ph-card.dk{background:var(--ink);color:var(--cream);border-color:var(--ink)}
+.ph-tag{display:inline-block;font-size:9px;letter-spacing:.18em;text-transform:uppercase;padding:4px 10px;background:var(--rust);color:var(--cream);margin-bottom:1rem;font-weight:600}
+.ph-card.dk .ph-tag{background:var(--rust-s);color:var(--ink)}
+.ph-card h3{font-family:'Fraunces',serif;font-size:2rem;font-weight:600;line-height:1.1;margin-bottom:.45rem}
+.ph-lead{font-size:13.5px;color:var(--muted);margin-bottom:2rem}
+.ph-card.dk .ph-lead{color:rgba(245,241,234,.6)}
+.ws{display:grid;grid-template-columns:52px 1fr;gap:1.5rem;padding:1.5rem 0;border-top:1px solid var(--sand)}
+.ph-card.dk .ws{border-color:rgba(245,241,234,.12)}
+.ws-n{font-family:'Fraunces',serif;font-size:1.9rem;font-weight:600;color:var(--rust);line-height:1}
+.ph-card.dk .ws-n{color:var(--rust-s)}
+.ws-b h4{font-family:'Fraunces',serif;font-size:1.1rem;margin-bottom:.35rem}
+.ws-b p{font-size:13px;color:var(--muted)}
+.ph-card.dk .ws-b p{color:rgba(245,241,234,.65)}
+.it-list{display:flex;flex-direction:column;gap:5px;margin-top:.65rem}
+.it-list .it{display:flex;gap:9px;font-size:12.5px}
+.it-list .it::before{content:'→';color:var(--rust);flex-shrink:0}
+.ph-card.dk .it-list .it::before{color:var(--rust-s)}
+
+/* SITE BOX */
+.site-box{background:var(--rust);color:var(--cream);padding:2.5rem 3rem;margin:2rem 0}
+.site-box .pre{font-family:'Fraunces',serif;font-style:italic;font-size:.9rem;opacity:.8;margin-bottom:.7rem}
+.site-box h3{font-family:'Fraunces',serif;font-size:clamp(1.5rem,3vw,2.1rem);font-weight:500;line-height:1.1;margin-bottom:1.25rem;max-width:580px}
+.site-box h3 em{font-style:italic}
+.site-box .sg{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-top:1.25rem}
+.site-box .sp h4{font-size:13px;font-weight:600;margin-bottom:5px;letter-spacing:.02em}
+.site-box .sp p{font-size:12.5px;opacity:.85;line-height:1.55}
+
+/* ECONOMICS */
+.ecpg{background:var(--paper)}
+.ph-box{border:2px dashed var(--sand);padding:2.5rem;text-align:center;margin:1.75rem 0;background:var(--warm)}
+.ph-box .tg{display:inline-block;font-size:9.5px;letter-spacing:.15em;text-transform:uppercase;color:var(--rust);padding:3px 10px;border:1px solid var(--rust);margin-bottom:.85rem;font-weight:600}
+.ph-box h3{font-family:'Fraunces',serif;font-size:1.7rem;font-weight:500;margin-bottom:.75rem}
+.ph-box p{font-size:13.5px;color:var(--muted);max-width:520px;margin:0 auto}
+.etbl{width:100%;border-collapse:collapse;font-size:13px;margin-bottom:1rem}
+.etbl th{font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);padding:7px 10px;border-bottom:2px solid var(--ink);text-align:left}
+.etbl td{padding:10px 10px;border-bottom:1px solid var(--warm);vertical-align:middle}
+.etbl tr.tot td{background:var(--ink);color:var(--cream);font-weight:600;border-bottom:none}
+.ref-list{margin-top:1.5rem;padding:1.5rem;background:var(--warm)}
+.ref-list h4{font-family:'Fraunces',serif;font-size:1.1rem;margin-bottom:.4rem}
+.ref-list p{font-size:12.5px;color:var(--muted);margin-bottom:.75rem}
+.ref-item{display:flex;gap:9px;font-size:12.5px;color:var(--muted);padding:5px 0;font-style:italic;align-items:center}
+.ref-item::before{content:'#';color:var(--rust);font-weight:700;font-style:normal;flex-shrink:0}
+
+/* FOOTER */
+.footer{background:var(--ink);color:var(--cream);padding:3rem 2rem 2rem}
+.fi{max-width:1020px;margin:0 auto}
+.fg{display:grid;grid-template-columns:1fr 1fr;gap:2rem;padding-bottom:2rem;border-bottom:1px solid rgba(245,241,234,.12);margin-bottom:1.5rem}
+.footer h4{font-family:'Fraunces',serif;font-size:1.35rem;font-weight:500;margin-bottom:.65rem}
+.footer p{font-size:13px;color:rgba(245,241,234,.55)}
+.fm{display:flex;justify-content:space-between;font-size:10.5px;color:rgba(245,241,234,.35)}
+
+@media(max-width:700px){
+  .two,.finding,.dark .sc-row,.site-box .sg,.fg{grid-template-columns:1fr}
+  .calendar{grid-template-columns:repeat(7,1fr)}
+  .cover h1{font-size:3.2rem}
+  .nav{flex-direction:column;gap:.5rem;padding:.6rem 1rem}
+  .nav-links{flex-wrap:wrap}
+  .nav-links a{padding:.3rem .6rem;font-size:9.5px}
+}
+@media print{.nav{display:none}.pg{break-after:page}body{background:#fff}}
+
+/* ═══════ BENTO PORTFOLIO (da m9.html) ═══════ */
+.bento{columns:2;column-gap:10px;margin-top:.5rem}
+@media(max-width:680px){.bento{columns:1;column-gap:8px}}
+.bento-tile{display:block;break-inside:avoid;margin-bottom:10px;position:relative;border-radius:12px;overflow:hidden;background:#111;border:.5px solid rgba(117,88,71,.08);opacity:1;transform:none}
+.bt-audio-btn{position:absolute;bottom:.85rem;right:.85rem;z-index:5;width:32px;height:32px;border-radius:50%;background:rgba(30,20,16,.7);backdrop-filter:blur(8px);border:.5px solid rgba(200,168,141,.25);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:background .2s,transform .15s}
+.bt-audio-btn:hover{background:rgba(30,20,16,.9);transform:scale(1.08)}
+.bt-audio-btn svg{width:14px;height:14px;fill:rgba(200,168,141,.75);pointer-events:none;transition:fill .2s}
+.bt-audio-btn.is-on{background:rgba(200,168,141,.2);border-color:rgba(200,168,141,.5)}
+.bt-audio-btn.is-on svg{fill:rgba(241,239,237,.9)}
+.bt-img{position:relative;overflow:hidden;width:100%}
+.bt-img img,.bt-img video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;display:block;transition:transform .6s cubic-bezier(.16,1,.3,1)}
+.bt-img.r-wide{aspect-ratio:16/9}
+.bt-img.r-land{aspect-ratio:4/3}
+.bt-img.r-sq{aspect-ratio:1}
+.bt-img.r-port{aspect-ratio:9/16}
+.bt-img.r-feed{aspect-ratio:4/5}
+.bt-placeholder{position:absolute;inset:0;background:linear-gradient(135deg,rgba(200,168,141,.08),rgba(117,88,71,.04));display:flex;align-items:center;justify-content:center;pointer-events:none}
+.bt-ph-label{font-size:.85rem;color:rgba(117,88,71,.2);letter-spacing:.06em;text-align:center;line-height:1.5;padding:1rem}
+.bt-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(14,14,14,.88) 0%,rgba(14,14,14,.18) 55%,transparent 100%);padding:1.25rem;display:flex;flex-direction:column;justify-content:flex-end;gap:.4rem;opacity:0;transition:opacity .35s;z-index:3}
+.bento-tile:hover .bt-overlay{opacity:1}
+.bento-tile:hover .bt-img img,.bento-tile:hover .bt-img video{transform:none}
+.bt-caption{font-family:'Fraunces',serif;font-size:clamp(.95rem,1.8vw,1.15rem);font-weight:500;color:rgba(241,239,237,.9);line-height:1.3;letter-spacing:-.01em}
+.bt-desc{font-family:'Inter',sans-serif;font-size:10px;color:rgba(241,239,237,.45);letter-spacing:.06em;line-height:1.5}
+.bt-brand-tag{position:absolute;top:.85rem;left:.85rem;background:rgba(14,14,14,.75);backdrop-filter:blur(8px);border:.5px solid rgba(200,168,141,.18);border-radius:99px;padding:4px 10px;font-family:'Inter',sans-serif;font-size:8px;letter-spacing:.1em;text-transform:uppercase;color:rgba(200,168,141,.7);z-index:4}
+.bt-type-tag{position:absolute;top:.85rem;right:.85rem;background:rgba(200,168,141,.15);backdrop-filter:blur(8px);border:.5px solid rgba(200,168,141,.25);border-radius:4px;padding:3px 8px;font-family:'Inter',sans-serif;font-size:7px;letter-spacing:.12em;text-transform:uppercase;color:rgba(200,168,141,.6);z-index:4}
+</style>
+</head>
+<body>
+
+<!-- LOADER -->
+<div id="loader" aria-hidden="true">
+  <div class="ldr-mark">
+    <span>Ribrain</span>
+    <span class="ldr-x">×</span>
+    <span class="ldr-sub">Macte Ovens</span>
+  </div>
+  <div class="ldr-bar"></div>
+  <div class="ldr-cap">Analisi strategica · 2026 · Riservato</div>
+</div>
+
+<!-- CURSORE CUSTOM -->
+<div id="cur" aria-hidden="true"></div>
+
+<nav class="nav">
+  <span class="nav-brand">Ribrain × Macte Ovens</span>
+  <div class="nav-links">
+    <a href="#cover">Intro</a>
+    <a href="#diagnosi">Diagnosi</a>
+    <a href="#strategia">Strategia</a>
+    <a href="#economics">Economics</a>
+  </div>
+</nav>
+
+<!-- COVER -->
+<section class="pg cover" id="cover">
+  <div class="pw">
+    <p class="cv-pre">Analisi & proposta strategica · maggio 2026</p>
+    <h1>Macte<br><em>Ovens</em></h1>
+    <p class="cv-sub">Abbiamo analizzato 17 mesi di campagne pubblicitarie, 414 righe di dati e tutto l'account Meta. Ecco cosa abbiamo trovato, e cosa facciamo.</p>
+    <div class="cv-meta">
+      <div class="cv-item"><p class="l">Per</p><p class="v">Gennaro Papace · Macte Ovens</p></div>
+      <div class="cv-item"><p class="l">Da</p><p class="v">Ribrain srl</p></div>
+      <div class="cv-item"><p class="l">Dati analizzati</p><p class="v">Gen 2025 – Mag 2026</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- DIAGNOSI -->
+<section class="pg" id="diagnosi" style="background:var(--paper)">
+  <div class="pw">
+    <div class="pg-lbl">
+      <span class="n">01</span><span>Diagnosi</span>
+      <span class="ln"></span>
+      <span>17 mesi analizzati · 414 righe di dati ad-level</span>
+    </div>
+
+    <h1 class="pt">Radiografia<br>completa <em>dell'account.</em></h1>
+    <p class="pl">Abbiamo smontato ogni campagna, ogni paese, ogni formato, ogni giorno dell'account. Quello che leggi non sono stime: sono i dati reali del tuo Business Manager.</p>
+
+    <!-- NUMERI TOP LEVEL -->
+    <div class="krow">
+      <div class="kc"><p class="l">Spesa totale analizzata</p><p class="v go">€23.912</p><p class="s">17 mesi di campagne</p></div>
+      <div class="kc"><p class="l">Vendite generate</p><p class="v">80</p><p class="s">Da Meta Ads</p></div>
+      <div class="kc"><p class="l">Fatturato portato dalle ads</p><p class="v g">€54.761</p><p class="s">Valore conversioni tracciate</p></div>
+      <div class="kc"><p class="l">Ticket medio per vendita</p><p class="v">€685</p><p class="s">Costante nel tempo</p></div>
+      <div class="kc"><p class="l">ROAS 2025</p><p class="v g">2.76x</p><p class="s">Per ogni €1 → tornano €2.76</p></div>
+      <div class="kc"><p class="l">ROAS 2026</p><p class="v r">1.27x</p><p class="s">In calo del 54% anno su anno</p></div>
+    </div>
+
+    <!-- CONFRONTO STESSO PERIODO -->
+    <div class="ch-block">
+      <p class="cht">Lo stesso periodo, due anni a confronto</p>
+      <p class="chs">Gennaio – metà maggio 2025 vs 2026. Budget aumentato del 52%, vendite scese del 12%. Il problema è chiaramente la strategia, non il prodotto.</p>
+      <div class="ch" style="height:280px"><canvas id="cmpChart"></canvas></div>
+    </div>
+
+    <!-- PROBLEMA 1: OBIETTIVI SBAGLIATI -->
+    <h2 class="sh" style="margin-top:3rem">Problema 1 · Il tipo di campagna sbagliato</h2>
+    <p style="font-size:14px;color:var(--muted);margin-bottom:1.25rem">Meta ti permette di scegliere cosa vuoi ottenere da una campagna. Scegliere "traffico" o "interazioni" invece di "vendite" è come assumere un cameriere che porta i menu ma non prende mai l'ordine.</p>
+
+    <div class="ch-block">
+      <p class="cht">Risultati per tipo di campagna</p>
+      <p class="chs">Stessa azienda, stesso prodotto. La differenza è solo nell'obiettivo scelto.</p>
+      <div class="ch" style="height:200px"><canvas id="objChart"></canvas></div>
+    </div>
+
+    <div class="waste-grid">
+      <div class="wc ok">
+        <p class="wt">Campagne "Vendita"</p>
+        <p class="wv g">3.87x</p>
+        <p class="wl">62 vendite generate con €11.023 di spesa. Costo per vendita: €178.</p>
+      </div>
+      <div class="wc bad">
+        <p class="wt">Campagne "Traffico"</p>
+        <p class="wv r">0.52x</p>
+        <p class="wl">3 vendite generate con €3.881 di spesa. Costo per vendita: €1.294.</p>
+      </div>
+      <div class="wc bad">
+        <p class="wt">Campagne "Interazioni"</p>
+        <p class="wv r">0.43x</p>
+        <p class="wl">1 sola vendita con €1.506 di spesa. Costo per vendita: €1.506.</p>
+      </div>
+    </div>
+    <div class="box rust"><strong>Spreco documentato:</strong> €5.387 investiti in campagne con obiettivo sbagliato. Con lo stesso budget su campagne "vendita", avrebbero generato circa 30 acquisti aggiuntivi.</div>
+
+    <!-- PROBLEMA 2: PAESI -->
+    <h2 class="sh" style="margin-top:3rem">Problema 2 · Budget distribuito nei paesi sbagliati</h2>
+    <p style="font-size:14px;color:var(--muted);margin-bottom:1.25rem">Non tutti i mercati si comportano allo stesso modo. Italia e Ungheria comprano. Germania e Austria quasi mai. Eppure la spesa è stata distribuita in modo quasi uniforme.</p>
+
+    <div class="ch-block">
+      <p class="cht">Rendimento per paese (2025–2026)</p>
+      <p class="chs">Verde = i tuoi mercati migliori. Rosso = stai perdendo soldi. Ogni barra mostra quanto torna per ogni euro speso.</p>
+      <div class="ch" style="height:340px"><canvas id="cntChart"></canvas></div>
+    </div>
+
+    <div class="waste-grid">
+      <div class="wc bad">
+        <p class="wt">Germania · 17 mesi</p>
+        <p class="wv r">€4.290</p>
+        <p class="wl">Spesi. 5 vendite. Costo per vendita: €858. ROAS 0.70x = ogni €100 spesi ne tornano €70.</p>
+      </div>
+      <div class="wc bad">
+        <p class="wt">Austria · 17 mesi</p>
+        <p class="wv r">€1.874</p>
+        <p class="wl">Spesi. 1 sola vendita. Costo per vendita: €1.874. ROAS 0.35x.</p>
+      </div>
+      <div class="wc bad">
+        <p class="wt">UK + nuovi test 2026</p>
+        <p class="wv r">€3.300</p>
+        <p class="wl">Spesi su UK, Polonia, Rep. Ceca, Portogallo. Zero vendite o quasi. Budget bruciato su mercati non testati.</p>
+      </div>
+    </div>
+    <div class="box rust"><strong>Totale spreco su paesi non performanti:</strong> circa <strong>€8.965</strong> in 17 mesi. Reinvestiti su Italia e Ungheria, con ROAS storici di 7-8x, avrebbero generato stimati 90+ vendite aggiuntive.</div>
+
+    <div class="box olive" style="margin-top:1rem"><strong>Il caso Romania:</strong> nel 2025 con soli €149 di spesa ha generato un ritorno di 9x. Nel 2026 hanno speso €425 sullo stesso mercato: zero vendite. Quasi certamente è cambiata la creatività. Va ripristinato esattamente il setup originale.</div>
+
+    <!-- PROBLEMA 3: STAGIONALITÀ -->
+    <h2 class="sh" style="margin-top:3rem">Problema 3 · L'account si è spento nei momenti sbagliati</h2>
+    <p style="font-size:14px;color:var(--muted);margin-bottom:1.25rem">Ogni volta che le campagne si fermano, l'algoritmo di Meta "dimentica" il tuo pubblico e deve ricominciare da capo. Ci vogliono 4–6 settimane per ritornare ai livelli di prima. È come allenarsi per una maratona e fermarsi 2 mesi prima della gara.</p>
+
+    <div class="ch-block">
+      <p class="cht">Timeline dell'account – mese per mese</p>
+      <p class="chs">Verde scuro = mese eccellente. Rosso = perdita. Grigio tratteggiato = account spento.</p>
+      <div class="calendar" id="cal"></div>
+      <p style="font-size:11.5px;color:var(--muted);margin-top:1rem">Agosto e settembre 2025 e febbraio 2026: <strong>3 mesi di pausa</strong>. La ripartenza di ottobre 2025 ha bruciato 3 settimane di budget prima di tornare efficiente. Il Black Friday ha salvato il trimestre, ma poteva rendere molto di più.</p>
+    </div>
+
+    <!-- PROBLEMA 4: CREATIVITÀ -->
+    <h2 class="sh" style="margin-top:3rem">Problema 4 · Le creatività migliori non sono mai state usate davvero</h2>
+    <p style="font-size:14px;color:var(--muted);margin-bottom:1.25rem">Abbiamo analizzato ogni singolo annuncio dell'account. La sorpresa: la creatività più performante di tutte ha ricevuto solo €74 di budget in 17 mesi. Non è mai stata scalata.</p>
+
+    <div class="finding">
+      <div class="fc star">
+        <p class="ft">La creatività più performante trovata</p>
+        <h4>GRAFICA-1 · il cavallo da corsa abbandonato</h4>
+        <p class="fv go">36.7x</p>
+        <p>Per ogni €1 speso ne tornavano €36.70. Costo per ogni vendita: <strong style="color:var(--rust-s)">€18</strong>. Vendite generate: 4 con soli €74 di budget. Non è mai stata scalata.</p>
+      </div>
+      <div class="fc">
+        <p class="ft">La creatività che ha bruciato più budget</p>
+        <h4>Spot integrale · il pozzo senza fondo</h4>
+        <p class="fv r">0.75x</p>
+        <p>Con €2.819 di spesa ha generato 3 vendite al costo di €940 ciascuna. Ogni vendita è costata più del margine generato.</p>
+      </div>
+    </div>
+
+    <div class="ch-block">
+      <p class="cht">Rendimento di ogni creatività utilizzata</p>
+      <p class="chs">Stesso account, stessa spesa pubblicitaria. Risultati completamente diversi a seconda della creatività scelta.</p>
+      <div class="ch" style="height:300px"><canvas id="crChart"></canvas></div>
+    </div>
+
+    <div class="box gold"><strong>La legge che emerge dai dati:</strong> il formato carosello con recensioni rende in media <strong>4.12x</strong>. I reel video rendono <strong>3.41x</strong>. I video "istituzionali" o gli spot interi rendono appena <strong>1x</strong> o meno. Il contenuto che convince non è quello più prodotto: è quello più autentico e specifico.</div>
+
+    <!-- PROBLEMA 5: IL GRANDE SPRECO -->
+    <div class="dark" style="margin-top:2rem">
+      <p class="pre">Il problema più grande di tutti</p>
+      <h3>Il sito riceve traffico interessato.<br>Ma non lo trasforma in <em>clienti.</em></h3>
+      <p>Su 4.078 persone che hanno aggiunto il forno al carrello negli ultimi 17 mesi, solo 76 hanno completato l'acquisto. Il 98% se ne va. Non è un problema di pubblicità: è un problema di pagina. Risolverlo è la leva con il ritorno più alto di tutto il progetto.</p>
+      <div class="sc-row">
+        <div class="sc"><p class="sl">Tasso conversione attuale</p><p class="sv" style="color:var(--rust-s)">1.9%</p><p class="ss">1 acquisto ogni 53 carrelli</p></div>
+        <div class="sc"><p class="sl">Benchmark settore premium</p><p class="sv">5–10%</p><p class="ss">1 acquisto ogni 10–20 carrelli</p></div>
+        <div class="sc"><p class="sl">Guadagno extra se arrivi al 5%</p><p class="sv">+€137k</p><p class="ss">Senza aumentare il budget ads</p></div>
+      </div>
+    </div>
+
+    <!-- SINTESI DIAGNOSI -->
+    <h2 class="sh" style="margin-top:3rem">In sintesi: 5 problemi, 5 soluzioni chiare</h2>
+    <div style="display:flex;flex-direction:column;gap:0">
+      <div style="display:grid;grid-template-columns:44px 1fr 1fr;gap:1.25rem;padding:1rem 0;border-bottom:1px solid var(--sand);font-size:13px;align-items:start">
+        <span style="font-family:'Fraunces',serif;font-size:1.75rem;font-weight:600;color:var(--rust);line-height:1">01</span>
+        <div><strong>Obiettivi campagna sbagliati</strong><br><span style="color:var(--muted)">€5.387 in campagne traffico/interazioni invece che vendite</span></div>
+        <div style="color:var(--olive)">→ Solo campagne con obiettivo Vendita da qui in avanti</div>
+      </div>
+      <div style="display:grid;grid-template-columns:44px 1fr 1fr;gap:1.25rem;padding:1rem 0;border-bottom:1px solid var(--sand);font-size:13px;align-items:start">
+        <span style="font-family:'Fraunces',serif;font-size:1.75rem;font-weight:600;color:var(--rust);line-height:1">02</span>
+        <div><strong>Budget disperso nei paesi sbagliati</strong><br><span style="color:var(--muted)">~€9.000 su Germania, Austria, UK e test falliti</span></div>
+        <div style="color:var(--olive)">→ Concentrare su Italia e Ungheria (ROAS 7-8x storico)</div>
+      </div>
+      <div style="display:grid;grid-template-columns:44px 1fr 1fr;gap:1.25rem;padding:1rem 0;border-bottom:1px solid var(--sand);font-size:13px;align-items:start">
+        <span style="font-family:'Fraunces',serif;font-size:1.75rem;font-weight:600;color:var(--rust);line-height:1">03</span>
+        <div><strong>Account spento nei mesi chiave</strong><br><span style="color:var(--muted)">3 mesi di pausa in 17 = riapprendimento algoritmico perso</span></div>
+        <div style="color:var(--olive)">→ Modello always-on: mai più pause, budget minimo garantito</div>
+      </div>
+      <div style="display:grid;grid-template-columns:44px 1fr 1fr;gap:1.25rem;padding:1rem 0;border-bottom:1px solid var(--sand);font-size:13px;align-items:start">
+        <span style="font-family:'Fraunces',serif;font-size:1.75rem;font-weight:600;color:var(--rust);line-height:1">04</span>
+        <div><strong>Creatività che funzionano mai scalate</strong><br><span style="color:var(--muted)">GRAFICA-1 a ROAS 36x con solo €74 di budget in 17 mesi</span></div>
+        <div style="color:var(--olive)">→ Identificare, replicare e scalare le creative già validate</div>
+      </div>
+      <div style="display:grid;grid-template-columns:44px 1fr 1fr;gap:1.25rem;padding:1rem 0;font-size:13px;align-items:start">
+        <span style="font-family:'Fraunces',serif;font-size:1.75rem;font-weight:600;color:var(--rust);line-height:1">05</span>
+        <div><strong>Sito che perde il 98% dei carrelli</strong><br><span style="color:var(--muted)">4.002 carrelli abbandonati in 17 mesi su 4.078 totali</span></div>
+        <div style="color:var(--olive)">→ Ottimizzazione pagine prodotto Shopify come priorità 1</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- STRATEGIA -->
+<section class="pg stpg" id="strategia">
+  <div class="pw">
+    <div class="pg-lbl">
+      <span class="n">02</span><span>Strategia</span>
+      <span class="ln"></span><span>Cosa facciamo nei prossimi mesi</span>
+    </div>
+
+    <h1 class="pt">Due fasi.<br>Setup, poi <em>regime.</em></h1>
+    <p class="pl">Il primo mese sistemiamo le fondamenta: sito, struttura ads, contenuti. Dal secondo mese le campagne vanno a regime e scaliamo in modo sostenibile fino al budget concordato di €3.000 al mese.</p>
+
+    <!-- FASE 1 -->
+    <div class="ph-card dk">
+      <span class="ph-tag">Mese 1 · Setup</span>
+      <h3>Fondamenta prima di accelerare</h3>
+      <p class="ph-lead">Nel primo mese non sprintiamo sulle ads. Costruiamo l'infrastruttura su cui tutto il resto funziona. Tre cantieri in parallelo.</p>
+
+      <div class="ws">
+        <span class="ws-n">A</span>
+        <div class="ws-b">
+          <h4>Ottimizzazione sito Shopify – la priorità assoluta</h4>
+          <p>Il sito è dove si vince o si perde. Tutto il traffico che portiamo con le ads finisce qui. Se la pagina non convince, i soldi delle ads sono sprecati.</p>
+          <div class="it-list">
+            <div class="it">Riprogettazione delle pagine prodotto: social proof, recensioni con foto e UGC integrati nel flusso di lettura</div>
+            <div class="it">Gerarchia visiva chiara: l'utente capisce subito qual è il modello giusto per lui</div>
+            <div class="it">Bollino AVPN, failure rate 0.2% e Made in Italy come elementi di fiducia sempre visibili</div>
+            <div class="it">Sezione confronto modelli, FAQ pratiche, numero clienti attivi in evidenza</div>
+            <div class="it">Ottimizzazione checkout: meno passaggi, meno attrito, meno abbandoni</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="ws">
+        <span class="ws-n">B</span>
+        <div class="ws-b">
+          <h4>Strategia Meta Ads – studio approfondito prima di spendere</h4>
+          <p>Definiamo chi è il cliente, cosa lo convince, quale angolo usare. Poi attiviamo le campagne. Non il contrario.</p>
+          <div class="it-list">
+            <div class="it">Mappatura personas: l'appassionato home cook, il proprietario di food truck, la piccola pizzeria</div>
+            <div class="it">Studio degli angle: "il tuo ultimo forno", "la pizza napoletana vera a casa", "non solo pizza"</div>
+            <div class="it">Definizione hook per ogni formato: i primi 2 secondi di ogni video, la prima slide di ogni carosello</div>
+            <div class="it">Setup tecnico: Pixel verificato, eventi Shopify mappati, struttura campagne always-on IT e HU</div>
+            <div class="it">Editing del materiale esistente (video YouTube, UGC Instagram) nei formati che performano</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="ws">
+        <span class="ws-n">C</span>
+        <div class="ws-b">
+          <h4>Test TikTok controllato</h4>
+          <p>Il pubblico pizza/cucina è presente su TikTok in Italia e Ungheria? Lo verifichiamo con un test a budget contenuto prima di investire a regime.</p>
+          <div class="it-list">
+            <div class="it">Verifica volume audience su TikTok Ads Manager per i mercati target</div>
+            <div class="it">Riadattamento dei video esistenti al linguaggio nativo TikTok (hook 0–2s, suono, formato verticale)</div>
+            <div class="it">Test 2–3 settimane con budget ridotto: se funziona, entra a regime dal mese 3 con costo aggiuntivo da concordare</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SITE FOCUS BOX -->
+    <div class="site-box">
+      <p class="pre">Il punto chiave di tutto il progetto</p>
+      <h3>Se il sito converte il <em>5%</em> invece dell'<em>1.9%</em>,<br>raddoppi le vendite senza spendere un euro in più di ads.</h3>
+      <div class="sg">
+        <div class="sp"><h4>Pagine prodotto</h4><p>Bollino AVPN visibile, recensioni con foto cliente, UGC video integrati, confronto chiaro tra modelli, badge Made in Italy reale, numero clienti in evidenza.</p></div>
+        <div class="sp"><h4>Checkout e abbandono</h4><p>Riduzione passaggi, recap chiaro del pagamento, opzioni spedizione visibili da subito, WhatsApp visibile per supporto pre-acquisto.</p></div>
+      </div>
+    </div>
+
+    <!-- SPOKI -->
+    <div style="background:var(--ink);color:var(--cream);padding:2.5rem 3rem;margin:2rem 0;position:relative;overflow:hidden">
+      <div style="position:absolute;top:-60px;right:-60px;width:220px;height:220px;border-radius:50%;background:radial-gradient(circle,rgba(192,74,31,.35) 0%,transparent 70%);pointer-events:none"></div>
+      <div style="display:flex;align-items:center;gap:.75rem;margin-bottom:1.5rem">
+        <span style="font-size:9.5px;letter-spacing:.18em;text-transform:uppercase;border:1px solid rgba(232,152,120,.5);color:var(--rust-s);padding:3px 10px;font-weight:600">Partner WhatsApp · Meta Tech Partner</span>
+      </div>
+      <h3 style="font-family:'Fraunces',serif;font-size:clamp(1.6rem,3vw,2.2rem);font-weight:500;line-height:1.1;margin-bottom:.75rem">Spoki: recuperare i carrelli abbandonati<br>con WhatsApp, in automatico</h3>
+      <p style="font-size:13.5px;color:rgba(245,241,234,.6);max-width:580px;margin-bottom:2rem">Spoki è la piattaforma italiana di WhatsApp Marketing integrata nativamente con Shopify. Una volta connessa, ogni carrello abbandonato riceve una sequenza automatica di messaggi. Non email che nessuno apre: WhatsApp, con il 98% di tasso di lettura.</p>
+
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-bottom:2rem">
+        <div style="border:1px solid rgba(245,241,234,.12);padding:1rem;text-align:center">
+          <div style="font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:rgba(245,241,234,.4);margin-bottom:6px">Open rate</div>
+          <div style="font-family:'Fraunces',serif;font-size:2rem;font-weight:600;color:var(--olive-s)">98%</div>
+          <div style="font-size:10px;color:rgba(245,241,234,.35);margin-top:4px">vs 10% delle email</div>
+        </div>
+        <div style="border:1px solid rgba(245,241,234,.12);padding:1rem;text-align:center">
+          <div style="font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:rgba(245,241,234,.4);margin-bottom:6px">Recupero carrelli</div>
+          <div style="font-family:'Fraunces',serif;font-size:2rem;font-weight:600;color:var(--olive-s)">41%</div>
+          <div style="font-size:10px;color:rgba(245,241,234,.35);margin-top:4px">dati verificati Spoki</div>
+        </div>
+        <div style="border:1px solid rgba(245,241,234,.12);padding:1rem;text-align:center">
+          <div style="font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:rgba(245,241,234,.4);margin-bottom:6px">ROI medio</div>
+          <div style="font-family:'Fraunces',serif;font-size:2rem;font-weight:600;color:var(--olive-s)">23x</div>
+          <div style="font-size:10px;color:rgba(245,241,234,.35);margin-top:4px">€1 investito → €23</div>
+        </div>
+        <div style="border:1px solid rgba(245,241,234,.12);padding:1rem;text-align:center">
+          <div style="font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:rgba(245,241,234,.4);margin-bottom:6px">Integra con</div>
+          <div style="font-family:'Fraunces',serif;font-size:1.6rem;font-weight:600;color:var(--olive-s)">Shopify</div>
+          <div style="font-size:10px;color:rgba(245,241,234,.35);margin-top:4px">nativo, nessun codice</div>
+        </div>
+      </div>
+
+      <p style="font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:rgba(245,241,234,.35);margin-bottom:1rem">Come funziona il flusso per Macte</p>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1rem">
+        <div style="border:1px solid rgba(245,241,234,.12);padding:1.1rem">
+          <div style="font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:rgba(245,241,234,.4);margin-bottom:.5rem">Messaggio 1 · Entro 1 ora</div>
+          <div style="font-size:13px;color:rgba(245,241,234,.85);line-height:1.5">"Ciao! Hai lasciato il tuo forno Macte nel carrello 🍕 Sei sicuro di voler aspettare?" + link diretto al checkout</div>
+        </div>
+        <div style="border:1px solid rgba(245,241,234,.12);padding:1.1rem">
+          <div style="font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:rgba(245,241,234,.4);margin-bottom:.5rem">Messaggio 2 · Entro 24 ore</div>
+          <div style="font-size:13px;color:rgba(245,241,234,.85);line-height:1.5">Social proof reale: screenshot recensioni, bollino AVPN, failure rate 0.2%. "Più di 2.000 clienti soddisfatti in Europa."</div>
+        </div>
+        <div style="border:1px solid rgba(245,241,234,.12);padding:1.1rem">
+          <div style="font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:rgba(245,241,234,.4);margin-bottom:.5rem">Messaggio 3 · Entro 72 ore</div>
+          <div style="font-size:13px;color:rgba(245,241,234,.85);line-height:1.5">Urgenza + incentivo a tempo limitato (accessorio omaggio o sconto 5%). Ultima occasione.</div>
+        </div>
+      </div>
+
+      <div style="margin-top:1.5rem;padding:1.1rem;background:rgba(245,241,234,.04);border:1px solid rgba(245,241,234,.1)">
+        <p style="font-size:12.5px;color:rgba(245,241,234,.65)">Per Macte significa questo: 4.002 carrelli abbandonati × 41% di recupero (scenario Spoki) × €685 di ticket medio = <strong style="color:var(--olive-s)">€1.123.561 di fatturato teorico totale recuperabile.</strong> Anche con un recupero del 5% realistico: +€137.000 l'anno, senza un euro in più di budget ads.</p>
+      </div>
+    </div>
+
+    <!-- FASE 2 -->
+    <div class="ph-card">
+      <span class="ph-tag" style="background:var(--olive)">Dal mese 2 · Regime</span>
+      <h3>Crescita sostenibile, mese dopo mese</h3>
+      <p class="ph-lead">Una volta che sito e struttura ads sono pronti, le campagne girano in modo continuo e vengono scalate in base ai risultati.</p>
+
+      <div class="ws">
+        <span class="ws-n">1</span>
+        <div class="ws-b">
+          <h4>Campagne Meta always-on su IT e HU</h4>
+          <p>Nessuna pausa. Budget giornaliero costante. A/B test settimanali su creatività. Scaling progressivo (+20% ogni 5 giorni quando i numeri lo permettono) fino al massimo di €3.000 al mese. Il limite dei 40 ordini pendenti è il nostro semaforo non negoziabile.</p>
+        </div>
+      </div>
+
+      <div class="ws">
+        <span class="ws-n">2</span>
+        <div class="ws-b">
+          <h4>Editing continuo dei contenuti per le ads</h4>
+          <p>Tutto il materiale video e foto già esistente su YouTube e Instagram viene raccolto, riadattato e montato nei formati giusti per le ads. Si parte da quello che c'è già, senza produzione nuova né budget extra per i creator.</p>
+        </div>
+      </div>
+
+      <div class="ws">
+        <span class="ws-n">3</span>
+        <div class="ws-b">
+          <h4>Reporting mensile con dati reali</h4>
+          <p>Un documento chiaro ogni mese con le vendite generate, il ritorno sull'investimento, cosa ha funzionato, cosa no, e le decisioni per il mese successivo. Una call ogni due settimane per allineamento.</p>
+        </div>
+      </div>
+    </div>
+
+    <div style="background:var(--ink);color:var(--cream);padding:2.5rem 3rem;margin-top:3rem">
+      <p style="font-family:'Fraunces',serif;font-style:italic;color:var(--rust-s);font-size:.9rem;margin-bottom:.7rem">Un principio che guida tutto</p>
+      <h3 style="font-family:'Fraunces',serif;font-size:clamp(1.5rem,3vw,2rem);font-weight:500;line-height:1.15;margin-bottom:1.25rem;max-width:680px">Meno paesi, più budget concentrato.<br>Più risultati. Ogni volta.</h3>
+      <p style="font-size:13.5px;color:rgba(245,241,234,.65);max-width:620px;line-height:1.7;margin-bottom:1.5rem">I dati dell'account lo confermano senza margine di dubbio: Italia (ROAS 7.55x) e Ungheria (ROAS 7.00x) funzionano. Germania, Austria, UK, Polonia, Repubblica Ceca: non funzionano. Ogni euro spostato da IT e HU verso un mercato non validato è un euro che smette di moltiplicarsi e inizia a evaporare.</p>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem">
+        <div style="border:1px solid rgba(245,241,234,.12);padding:1.25rem">
+          <p style="font-size:9.5px;letter-spacing:.15em;text-transform:uppercase;color:rgba(245,241,234,.35);margin-bottom:.6rem">Se diluisci su 8 paesi</p>
+          <p style="font-family:'Fraunces',serif;font-size:1.5rem;font-weight:600;color:var(--rust-s);margin-bottom:.4rem">~€375/paese</p>
+          <p style="font-size:12.5px;color:rgba(245,241,234,.55)">Budget troppo basso per far imparare l'algoritmo. Meta non riesce a trovare i clienti giusti. ROAS mediocre ovunque.</p>
+        </div>
+        <div style="border:1px solid rgba(245,241,234,.12);padding:1.25rem">
+          <p style="font-size:9.5px;letter-spacing:.15em;text-transform:uppercase;color:rgba(245,241,234,.35);margin-bottom:.6rem">Se concentri su IT + HU</p>
+          <p style="font-family:'Fraunces',serif;font-size:1.5rem;font-weight:600;color:var(--olive-s);margin-bottom:.4rem">€1.500–1.800/mercato</p>
+          <p style="font-size:12.5px;color:rgba(245,241,234,.55)">Massa critica sufficiente. L'algoritmo trova i clienti con storico di acquisto comprovato. ROAS 7x confermato dai dati.</p>
+        </div>
+      </div>
+      <p style="font-size:12px;color:rgba(245,241,234,.4);margin-top:1.25rem">I mercati esteri già performanti (Norvegia, Romania) vengono reintrodotti gradualmente solo dopo che IT e HU sono a regime e i dati lo giustificano. Nessuna scommessa: solo scalate basate su evidenza.</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- ECONOMICS -->
+<section class="pg ecpg" id="economics">
+  <div class="pw">
+    <div class="pg-lbl">
+      <span class="n">03</span><span>Economics</span>
+      <span class="ln"></span><span>Quanto costa, cosa include</span>
+    </div>
+
+    <h1 class="pt">Investimento<br><em>trasparente.</em></h1>
+    <p class="pl">Tutto basato su ore reali di lavoro. Nessun forfait opaco: vedi esattamente cosa pagate e per cosa. Il budget media va sempre e solo alle piattaforme, mai a Ribrain.</p>
+
+    <!-- SETUP MESE 1 -->
+    <div style="background:var(--ink);color:var(--cream);padding:2.5rem 3rem;margin-bottom:1.5rem;position:relative;overflow:hidden">
+      <div style="position:absolute;right:-1rem;top:-2rem;font-family:'Fraunces',serif;font-size:10rem;font-weight:700;color:rgba(255,255,255,.03);line-height:1;pointer-events:none">01</div>
+      <p style="font-size:9.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--rust-s);margin-bottom:.75rem;font-weight:600">Mese 1 · Una tantum</p>
+      <h3 style="font-family:'Fraunces',serif;font-size:1.9rem;font-weight:500;margin-bottom:.5rem">Setup completo</h3>
+      <p style="font-size:13px;color:rgba(245,241,234,.55);margin-bottom:2rem">Sito Shopify, struttura ads, studio personas e angle, setup Spoki, test TikTok. Si paga una sola volta.</p>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem">
+        <div>
+          <p style="font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:rgba(245,241,234,.35);margin-bottom:.5rem">Ore di lavoro stimate</p>
+          <p style="font-family:'Fraunces',serif;font-size:3rem;font-weight:600;line-height:1">29–38<span style="font-size:1.2rem;font-weight:400;opacity:.6"> ore</span></p>
+        </div>
+        <div>
+          <p style="font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:rgba(245,241,234,.35);margin-bottom:.5rem">Fee di setup</p>
+          <p style="font-family:'Fraunces',serif;font-size:3rem;font-weight:600;line-height:1;color:var(--olive-s)">€1.450<span style="font-size:1rem;font-weight:400;opacity:.7"> – €1.900</span></p>
+        </div>
+      </div>
+      <div style="margin-top:1.5rem;display:flex;flex-direction:column;gap:5px">
+        <div style="display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid rgba(245,241,234,.08);font-size:12.5px">
+          <span>Ottimizzazione sito Shopify (pagine prodotto + checkout)</span><span style="color:rgba(245,241,234,.5)">12–16h</span>
+        </div>
+        <div style="display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid rgba(245,241,234,.08);font-size:12.5px">
+          <span>Studio strategia ads (personas, angle, hook, struttura campagne)</span><span style="color:rgba(245,241,234,.5)">6–8h</span>
+        </div>
+        <div style="display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid rgba(245,241,234,.08);font-size:12.5px">
+          <span>Setup tecnico Meta (Pixel, Conversions API, eventi Shopify)</span><span style="color:rgba(245,241,234,.5)">3–4h</span>
+        </div>
+        <div style="display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid rgba(245,241,234,.08);font-size:12.5px">
+          <span>Setup Spoki (connessione Shopify, flussi 3 messaggi, copy)</span><span style="color:rgba(245,241,234,.5)">4–5h</span>
+        </div>
+        <div style="display:flex;justify-content:space-between;padding:6px 0;font-size:12.5px">
+          <span>Test TikTok (analisi audience, editing video, campagna pilota)</span><span style="color:rgba(245,241,234,.5)">4–5h</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- GESTIONE MENSILE -->
+    <div style="background:var(--paper);border:1px solid var(--sand);padding:2.5rem 3rem;margin-bottom:1.5rem;position:relative;overflow:hidden">
+      <div style="position:absolute;right:-1rem;top:-2rem;font-family:'Fraunces',serif;font-size:10rem;font-weight:700;color:rgba(0,0,0,.025);line-height:1;pointer-events:none">02</div>
+      <p style="font-size:9.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--rust);margin-bottom:.75rem;font-weight:600">Dal mese 2 · Mensile ricorrente</p>
+      <h3 style="font-family:'Fraunces',serif;font-size:1.9rem;font-weight:500;margin-bottom:.5rem">Gestione a regime</h3>
+      <p style="font-size:13px;color:var(--muted);margin-bottom:2rem">Ads, editing contenuti, Spoki, reporting. Ogni mese, in modo costante.</p>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem">
+        <div>
+          <p style="font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:.5rem">Ore mensili stimate</p>
+          <p style="font-family:'Fraunces',serif;font-size:3rem;font-weight:600;line-height:1">28–37<span style="font-size:1.2rem;font-weight:400;color:var(--muted)"> ore/mese</span></p>
+        </div>
+        <div>
+          <p style="font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:.5rem">Fee mensile Ribrain</p>
+          <p style="font-family:'Fraunces',serif;font-size:3rem;font-weight:600;line-height:1;color:var(--olive)">€1.400<span style="font-size:1rem;font-weight:400;color:var(--muted)"> – €1.850</span><span style="font-size:1rem;font-weight:400;color:var(--muted)">/mese</span></p>
+        </div>
+      </div>
+      <div style="margin-top:1.5rem;display:flex;flex-direction:column;gap:5px">
+        <div style="display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid var(--warm);font-size:12.5px">
+          <span>Gestione Meta Ads (monitoraggio, ottimizzazione, A/B test, copy)</span><span style="color:var(--muted)">14–18h</span>
+        </div>
+        <div style="display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid var(--warm);font-size:12.5px">
+          <span>Editing contenuti esistenti per le ads (video, foto, formati)</span><span style="color:var(--muted)">6–8h</span>
+        </div>
+        <div style="display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid var(--warm);font-size:12.5px">
+          <span>Gestione flussi Spoki + ottimizzazione messaggi</span><span style="color:var(--muted)">2–3h</span>
+        </div>
+        <div style="display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid var(--warm);font-size:12.5px">
+          <span>TikTok (se test positivo, gestione campagna ongoing)</span><span style="color:var(--muted)">3–4h</span>
+        </div>
+        <div style="display:flex;justify-content:space-between;padding:6px 0;font-size:12.5px">
+          <span>Reporting mensile + call bisettimanali</span><span style="color:var(--muted)">3–4h</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- NOTA BUDGET MEDIA -->
+    <div style="background:var(--warm);border:1px solid var(--sand);padding:1.5rem 2rem;margin-bottom:2rem">
+      <p style="font-size:12px;color:var(--muted);line-height:1.65">Il budget media è separato dalla fee e va interamente alle piattaforme pubblicitarie (Meta). Ribrain non applica percentuali sul media. Si scala verso €3.000 solo quando i dati confermano un ritorno positivo.</p>
+    </div>
+
+    <!-- REFERENZE -->
+    <!-- VIDEO PORTFOLIO WALL -->
+    <div style="margin-bottom:2rem">
+      <p style="font-size:9.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-bottom:.5rem">Il lavoro</p>
+      <h2 class="sh" style="margin-bottom:.4rem">Una selezione.</h2>
+      <p style="font-family:'Fraunces',serif;font-size:1.4rem;font-style:italic;color:var(--rust);margin-bottom:.75rem">Formato, voce, identità visiva.</p>
+      <p style="font-size:13px;color:var(--muted);max-width:480px;margin-bottom:2rem">Quello che segue è una selezione di contenuti prodotti: reel, grafiche, campagne. Non template, non batch. Clicca per sentire l'audio.</p>
+
+      <div id="portfolioWall" class="bento">
+
+        <!-- LEMON APPEAL: reel verticale -->
+        <div class="bento-tile" data-brand="lemon-appeal">
+          <div class="bt-img r-port">
+            <video autoplay muted loop playsinline><source src="https://raw.githubusercontent.com/michele-riccio/bzarhotel/main/portfolio/lemon1.mp4" type="video/mp4"></video>
+            <div class="bt-placeholder"><div class="bt-ph-label">Lemon Appeal</div></div>
+            <button class="bt-audio-btn" aria-label="Attiva audio" title="Attiva audio">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path class="icon-muted" d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/>
+                <path class="icon-on" style="display:none" d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/>
+              </svg>
+            </button>
+          </div>
+          <div class="bt-brand-tag">Lemon Appeal</div><div class="bt-type-tag">Reel</div>
+          <div class="bt-overlay"><div class="bt-caption">Costiera in un frame</div><div class="bt-desc">Reel · 9:16 · Instagram</div></div>
+        </div>
+
+        <!-- MEATIN: reel -->
+        <div class="bento-tile" data-brand="meatin">
+          <div class="bt-img r-port">
+            <video autoplay muted loop playsinline><source src="https://raw.githubusercontent.com/michele-riccio/bzarhotel/main/portfolio/meatin.mp4" type="video/mp4"></video>
+            <div class="bt-placeholder"><div class="bt-ph-label">Meatin</div></div>
+            <button class="bt-audio-btn" aria-label="Attiva audio" title="Attiva audio">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path class="icon-muted" d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/>
+                <path class="icon-on" style="display:none" d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/>
+              </svg>
+            </button>
+          </div>
+          <div class="bt-brand-tag">Meatin</div><div class="bt-type-tag">Reel</div>
+          <div class="bt-overlay"><div class="bt-caption">La carne in scena</div><div class="bt-desc">Reel · Food storytelling · Instagram</div></div>
+        </div>
+
+        <!-- MEATIN: piatto foto -->
+        <div class="bento-tile" data-brand="meatin">
+          <div class="bt-img r-sq">
+            <img src="https://raw.githubusercontent.com/michele-riccio/bzarhotel/main/portfolio/PS_Piatto_2-22_Meatin%20(1).jpg" alt="Meatin piatto" loading="lazy">
+            <div class="bt-placeholder"><div class="bt-ph-label">Meatin</div></div>
+          </div>
+          <div class="bt-brand-tag">Meatin</div><div class="bt-type-tag">Feed</div>
+          <div class="bt-overlay"><div class="bt-caption">Dettaglio di piatto</div><div class="bt-desc">Food photography · Editoriale</div></div>
+        </div>
+
+        <!-- CELA: reel -->
+        <div class="bento-tile" data-brand="cela">
+          <div class="bt-img r-port">
+            <video autoplay muted loop playsinline><source src="https://raw.githubusercontent.com/michele-riccio/bzarhotel/main/portfolio/cela.mp4" type="video/mp4"></video>
+            <div class="bt-placeholder"><div class="bt-ph-label">Cela</div></div>
+            <button class="bt-audio-btn" aria-label="Attiva audio" title="Attiva audio">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path class="icon-muted" d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/>
+                <path class="icon-on" style="display:none" d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/>
+              </svg>
+            </button>
+          </div>
+          <div class="bt-brand-tag">Cela</div><div class="bt-type-tag">Reel</div>
+          <div class="bt-overlay"><div class="bt-caption">Brand in movimento</div><div class="bt-desc">Reel · Campagna · Instagram</div></div>
+        </div>
+
+        <!-- LEMON APPEAL: reel 2 -->
+        <div class="bento-tile" data-brand="lemon-appeal">
+          <div class="bt-img r-port">
+            <video autoplay muted loop playsinline><source src="https://raw.githubusercontent.com/michele-riccio/bzarhotel/main/portfolio/lemon2.mp4" type="video/mp4"></video>
+            <div class="bt-placeholder"><div class="bt-ph-label">Lemon Appeal</div></div>
+            <button class="bt-audio-btn" aria-label="Attiva audio" title="Attiva audio">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path class="icon-muted" d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/>
+                <path class="icon-on" style="display:none" d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/>
+              </svg>
+            </button>
+          </div>
+          <div class="bt-brand-tag">Lemon Appeal</div><div class="bt-type-tag">Reel</div>
+          <div class="bt-overlay"><div class="bt-caption">Prodotto in scena</div><div class="bt-desc">Reel · 9:16 · Instagram</div></div>
+        </div>
+
+        <!-- IL MOLINO: reel -->
+        <div class="bento-tile" data-brand="molino">
+          <div class="bt-img r-port">
+            <video autoplay muted loop playsinline><source src="https://raw.githubusercontent.com/michele-riccio/bzarhotel/main/portfolio/molino1.mp4" type="video/mp4"></video>
+            <div class="bt-placeholder"><div class="bt-ph-label">Il Molino</div></div>
+            <button class="bt-audio-btn" aria-label="Attiva audio" title="Attiva audio">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path class="icon-muted" d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/>
+                <path class="icon-on" style="display:none" d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/>
+              </svg>
+            </button>
+          </div>
+          <div class="bt-brand-tag">Il Molino</div><div class="bt-type-tag">Reel</div>
+          <div class="bt-overlay"><div class="bt-caption">Pasta, grano, tradizione</div><div class="bt-desc">Reel · Food storytelling · Instagram</div></div>
+        </div>
+
+        <!-- MEATIN: piatto 2 -->
+        <div class="bento-tile" data-brand="meatin">
+          <div class="bt-img r-sq">
+            <img src="https://raw.githubusercontent.com/michele-riccio/bzarhotel/main/portfolio/PS_Piatto_2-22_Meatin.jpg" alt="Meatin piatto 2" loading="lazy">
+            <div class="bt-placeholder"><div class="bt-ph-label">Meatin</div></div>
+          </div>
+          <div class="bt-brand-tag">Meatin</div><div class="bt-type-tag">Feed</div>
+          <div class="bt-overlay"><div class="bt-caption">Materia prima e tecnica</div><div class="bt-desc">Food photography · Dettaglio</div></div>
+        </div>
+
+      </div>
+    </div>
+
+    <h2 class="sh" style="margin-top:2.5rem">Cosa è incluso, cosa no</h2>
+    <div class="two">
+      <div style="background:var(--paper);border:1px solid var(--sand);padding:1.5rem">
+        <h3 class="ss" style="margin-top:0">Incluso nella fee</h3>
+        <div class="it-list">
+          <div class="it">Setup e gestione campagne Meta Ads</div>
+          <div class="it">Studio personas, angle, hook creativi</div>
+          <div class="it">Editing video e foto esistenti per le ads</div>
+          <div class="it">Ottimizzazione pagine Shopify</div>
+          <div class="it">Setup e gestione Spoki (recupero carrelli)</div>
+          <div class="it">Test TikTok mese 1</div>
+          <div class="it">Reporting mensile + call bisettimanali</div>
+        </div>
+      </div>
+      <div style="background:var(--warm);border:1px solid var(--sand);padding:1.5rem">
+        <h3 class="ss" style="margin-top:0">Da valutare in seguito</h3>
+        <div class="it-list">
+          <div class="it">Produzione video originali (riprese nuove)</div>
+          <div class="it">UGC con creator nuovi</div>
+          <div class="it">TikTok a regime (se test positivo)</div>
+          <div class="it">Lead gen B2B Extra-UE (distributori)</div>
+          <div class="it">Budget media oltre €3.000/mese</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="fi">
+    <div class="fg">
+      <div><h4>Prossimi passi</h4><p>Inserire i link delle referenze Ribrain, allinearci su eventuali aggiustamenti alla proposta, e fissare la call di presentazione con Gennaro.</p></div>
+      <div><h4>Ribrain</h4><p>Strategia, ads e ottimizzazione siti per brand premium del food e dell'HoReCa. Approccio dati-first, esecuzione artigianale.</p></div>
+    </div>
+    <div class="fm"><span>Macte Ovens × Ribrain · Strategia 2026</span><span>Documento riservato · 20 maggio 2026</span></div>
+  </div>
+</footer>
+
+<script>
+const C={ink:'#0E0E0E',rust:'#C04A1F',rustS:'#E89878',olive:'#445220',oliveS:'#8EA84C',gold:'#A8831A',sand:'#D4C9AE',muted:'#7A7060'};
+
+// Comparison
+new Chart(document.getElementById('cmpChart'),{
+  type:'bar',
+  data:{
+    labels:['Budget speso','Vendite','Fatturato generato','ROAS'],
+    datasets:[
+      {label:'2025 (gen–mag)',data:[4921,16,9955,2.02],backgroundColor:C.olive,borderRadius:4},
+      {label:'2026 (gen–mag)',data:[7502,14,9494,1.27],backgroundColor:C.rust,borderRadius:4}
+    ]
+  },
+  options:{
+    responsive:true,maintainAspectRatio:false,
+    plugins:{
+      legend:{position:'top',align:'end',labels:{font:{size:12,family:'Inter'},color:C.ink,boxWidth:12,padding:12}},
+      tooltip:{callbacks:{label:c=>{
+        if(c.dataIndex===3)return ` ${c.dataset.label}: ${c.raw}x`;
+        if(c.dataIndex===1)return ` ${c.dataset.label}: ${c.raw} vendite`;
+        return ` ${c.dataset.label}: €${c.raw.toLocaleString()}`;
+      }}}
+    },
+    scales:{
+      y:{beginAtZero:true,type:'logarithmic',grid:{color:'rgba(0,0,0,0.05)'},ticks:{font:{size:11},callback:v=>v.toLocaleString()}},
+      x:{grid:{display:false},ticks:{font:{size:12}}}
+    }
+  }
+});
+
+// Obiettivi
+new Chart(document.getElementById('objChart'),{
+  type:'bar',
+  data:{
+    labels:['Campagna "Vendita"\n(€11k · 62 vendite)','Campagna "Traffico"\n(€3.9k · 3 vendite)','Campagna "Interazioni"\n(€1.5k · 1 vendita)'],
+    datasets:[{data:[3.87,0.52,0.43],backgroundColor:[C.olive,C.rust,C.rust],borderRadius:4}]
+  },
+  options:{
+    indexAxis:'y',responsive:true,maintainAspectRatio:false,
+    plugins:{
+      legend:{display:false},
+      tooltip:{callbacks:{label:c=>{
+        const spiegazione=['Per ogni €1 speso, ne tornano €3.87','Per ogni €1 speso, ne tornano €0.52','Per ogni €1 speso, ne tornano €0.43'];
+        return ` ${spiegazione[c.dataIndex]}`;
+      }}}
+    },
+    scales:{
+      x:{beginAtZero:true,max:5,grid:{color:'rgba(0,0,0,0.05)'},ticks:{callback:v=>v+'x',font:{size:11}}},
+      y:{grid:{display:false},ticks:{font:{size:12}}}
+    }
+  }
+});
+
+// Paesi
+const cL=['Italia','Ungheria','Norvegia','Romania','Spagna','Francia','UK','Germania','Austria'];
+const cR=[7.55,7.0,2.42,2.34,1.17,1.0,0.88,0.70,0.35];
+const cC=cR.map(r=>r>=3?C.olive:r>=1.5?C.oliveS:r>=1?C.gold:C.rust);
+new Chart(document.getElementById('cntChart'),{
+  type:'bar',
+  data:{labels:cL,datasets:[{label:'ROAS',data:cR,backgroundColor:cC,borderRadius:4}]},
+  options:{
+    indexAxis:'y',responsive:true,maintainAspectRatio:false,
+    plugins:{
+      legend:{display:false},
+      tooltip:{callbacks:{label:c=>{
+        const r=c.raw;
+        if(r>=3)return ` Per ogni €1 → tornano €${r.toFixed(2)}. Funziona benissimo.`;
+        if(r>=1.5)return ` Per ogni €1 → tornano €${r.toFixed(2)}. Mercato promettente.`;
+        if(r>=1)return ` Per ogni €1 → tornano €${r.toFixed(2)}. Break even, da valutare.`;
+        return ` Per ogni €1 → tornano solo €${r.toFixed(2)}. Stai perdendo soldi.`;
+      }}}
+    },
+    scales:{
+      x:{beginAtZero:true,grid:{color:'rgba(0,0,0,0.05)'},ticks:{callback:v=>v+'x',font:{size:11}}},
+      y:{grid:{display:false},ticks:{font:{size:12.5,weight:'500'}}}
+    }
+  }
+});
+
+// Creatività
+const crN=['GRAFICA-1','video 2','Carosello+rec.','Reel 1','video 3d','Reel 2','Spot integrale'];
+const crR=[36.72,21.32,18.65,13.21,12.02,5.38,0.75];
+const crS=[74,91,260,1178,225,2504,2819];
+const crC=crR.map(r=>r>=10?C.olive:r>=3?C.oliveS:r>=1?C.gold:C.rust);
+new Chart(document.getElementById('crChart'),{
+  type:'bar',
+  data:{labels:crN,datasets:[{label:'ROAS',data:crR,backgroundColor:crC,borderRadius:4}]},
+  options:{
+    responsive:true,maintainAspectRatio:false,
+    plugins:{
+      legend:{display:false},
+      tooltip:{callbacks:{label:c=>` €${crS[c.dataIndex]} spesi · ROAS ${c.raw}x · €${Math.round(crS[c.dataIndex]/c.raw)} per vendita`}}
+    },
+    scales:{
+      y:{beginAtZero:true,grid:{color:'rgba(0,0,0,0.05)'},ticks:{callback:v=>v+'x',font:{size:11}}},
+      x:{grid:{display:false},ticks:{font:{size:11},maxRotation:20}}
+    }
+  }
+});
+
+// Calendar
+const months=[
+  {l:'Gen 25',r:0,cls:'bad'},{l:'Feb 25',r:0.96,cls:'bad'},{l:'Mar 25',r:1.99,cls:'med'},
+  {l:'Apr 25',r:5.22,cls:'good'},{l:'Mag 25',r:0.70,cls:'bad'},{l:'Giu 25',r:0,cls:'bad'},
+  {l:'Lug 25',r:0,cls:'bad'},{l:'Ago 25',r:null,cls:'paused'},{l:'Set 25',r:null,cls:'paused'},
+  {l:'Ott 25',r:3.32,cls:'ok'},{l:'Nov 25',r:5.87,cls:'good'},{l:'Dic 25',r:0.55,cls:'bad'},
+  {l:'Feb 26',r:null,cls:'paused'}
+];
+const calEl=document.getElementById('cal');
+months.forEach(m=>{
+  const div=document.createElement('div');
+  div.className='cal-month';
+  const lbl=document.createElement('div');lbl.className='cm-l';lbl.textContent=m.l;
+  const box=document.createElement('div');
+  box.className='cm-b '+m.cls;
+  box.textContent=m.r===null?'STOP':m.r===0?'–':m.r+'x';
+  box.title=m.r===null?'Account in pausa':m.r===0?'Nessuna vendita (obiettivo sbagliato)':m.r+'x ROAS';
+  div.appendChild(lbl);div.appendChild(box);
+  calEl.appendChild(div);
+});
+
+// Audio toggle (da m9.html)
+(function(){
+  document.querySelectorAll('.bt-audio-btn').forEach(function(btn){
+    var tile=btn.closest('.bento-tile');
+    var video=tile?tile.querySelector('video'):null;
+    if(!video) return;
+    btn.addEventListener('click',function(e){
+      e.stopPropagation();
+      var muted=!video.muted;
+      document.querySelectorAll('.bento-tile video').forEach(function(v){v.muted=true;});
+      document.querySelectorAll('.bt-audio-btn').forEach(function(b){
+        b.classList.remove('is-on');
+        var iOn=b.querySelector('.icon-on');var iMu=b.querySelector('.icon-muted');
+        if(iOn)iOn.style.display='none';if(iMu)iMu.style.display='';
+      });
+      if(!muted){
+        video.muted=false;
+        btn.classList.add('is-on');
+        btn.setAttribute('title','Disattiva audio');
+        var iOn=btn.querySelector('.icon-on');var iMu=btn.querySelector('.icon-muted');
+        if(iOn)iOn.style.display='';if(iMu)iMu.style.display='none';
+      }
+    });
+  });
+})();
+
+// ── LOADER ──────────────────────────────────────
+window.addEventListener('load', function(){
+  setTimeout(function(){
+    var ldr = document.getElementById('loader');
+    if(ldr) ldr.classList.add('is-out');
+  }, 1100);
+});
+// Fallback sicurezza
+setTimeout(function(){
+  var ldr = document.getElementById('loader');
+  if(ldr) ldr.classList.add('is-out');
+}, 3000);
+
+// ── CURSOR ──────────────────────────────────────
+var cur = document.getElementById('cur');
+if(cur && window.matchMedia('(hover:hover)').matches){
+  document.addEventListener('mousemove', function(e){
+    cur.style.left = e.clientX + 'px';
+    cur.style.top  = e.clientY + 'px';
+  });
+  document.querySelectorAll('a,button,.bento-tile,.ph-card,.kc,.wc,.fc,.tier').forEach(function(el){
+    el.addEventListener('mouseenter', function(){ cur.style.width='28px'; cur.style.height='28px'; });
+    el.addEventListener('mouseleave', function(){ cur.style.width='8px';  cur.style.height='8px';  });
+  });
+}
+
+// Nav
+const secs=document.querySelectorAll('section.pg,section[id]');
+const lnks=document.querySelectorAll('.nav-links a');
+window.addEventListener('scroll',()=>{
+  let cur='';
+  secs.forEach(s=>{if(window.scrollY>=s.offsetTop-160)cur=s.id});
+  lnks.forEach(l=>l.classList.toggle('on',l.getAttribute('href')==='#'+cur));
+});
+</script>
+</body>
+</html>
