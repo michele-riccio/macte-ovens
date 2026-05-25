@@ -33,7 +33,14 @@ body{font-family:'Inter',sans-serif;background:var(--paper);color:var(--ink);lin
 
 /* NAV */
 .nav{position:sticky;top:0;z-index:100;background:var(--ink);color:var(--cream);padding:.65rem 2rem;display:flex;justify-content:space-between;align-items:center}
-.nav-brand{font-family:'Fraunces',serif;font-size:.95rem;font-weight:600;letter-spacing:.02em}
+.nav-brand{display:flex;align-items:center;gap:.75rem}
+.nav-brand img{height:22px;width:auto;display:block}
+.nav-sep{color:rgba(245,241,234,.25);font-size:.85rem}
+.ldr-logos{display:flex;align-items:center;gap:1.25rem;margin-bottom:.25rem}
+.ldr-logos img{display:block}
+.ldr-logos .ldr-x{color:var(--rust);font-size:1.4rem;font-family:'Fraunces',serif;font-style:italic;opacity:.7}
+.footer-logos{display:flex;align-items:center;gap:1.25rem;margin-bottom:.65rem}
+.footer-logos img{display:block;opacity:.7;filter:brightness(0) invert(1)}
 .nav-links{display:flex}
 .nav-links a{color:rgba(245,241,234,.45);text-decoration:none;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;padding:.45rem 1rem;transition:color .2s}
 .nav-links a:hover,.nav-links a.on{color:var(--rust-s)}
@@ -231,10 +238,10 @@ h3.ss{font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--m
 
 <!-- LOADER -->
 <div id="loader" aria-hidden="true">
-  <div class="ldr-mark">
-    <span>Ribrain</span>
+  <div class="ldr-logos">
+    <img src="https://www.ribrainstudio.com/wp-content/uploads/2025/01/Logo_ribrain_Nero.svg" alt="Ribrain" style="height:28px;filter:brightness(0) invert(1);opacity:.8">
     <span class="ldr-x">×</span>
-    <span class="ldr-sub">Macte Ovens</span>
+    <img src="https://macteovens.com/cdn/shop/files/Senza_titolo_Logo_Twitch_1e33f37c-f008-4e7f-ae1b-16c1f38bb9a8_540x.png?v=1708444725" alt="Macte Ovens" style="height:36px;filter:brightness(0) invert(1);opacity:.8">
   </div>
   <div class="ldr-bar"></div>
   <div class="ldr-cap">Analisi strategica · 2026 · Riservato</div>
@@ -244,7 +251,11 @@ h3.ss{font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--m
 <div id="cur" aria-hidden="true"></div>
 
 <nav class="nav">
-  <span class="nav-brand">Ribrain × Macte Ovens</span>
+  <div class="nav-brand">
+    <img src="https://www.ribrainstudio.com/wp-content/uploads/2025/01/Logo_ribrain_Nero.svg" alt="Ribrain" style="height:20px;filter:brightness(0) invert(1)">
+    <span class="nav-sep">×</span>
+    <img src="https://macteovens.com/cdn/shop/files/Senza_titolo_Logo_Twitch_1e33f37c-f008-4e7f-ae1b-16c1f38bb9a8_540x.png?v=1708444725" alt="Macte Ovens" style="height:28px;filter:brightness(0) invert(1)">
+  </div>
   <div class="nav-links">
     <a href="#cover">Intro</a>
     <a href="#diagnosi">Diagnosi</a>
@@ -256,7 +267,11 @@ h3.ss{font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--m
 <!-- COVER -->
 <section class="pg cover" id="cover">
   <div class="pw">
-    <p class="cv-pre">Analisi & proposta strategica · maggio 2026</p>
+    <p class="cv-pre" style="display:flex;align-items:center;gap:.75rem">
+      <img src="https://www.ribrainstudio.com/wp-content/uploads/2025/01/Logo_ribrain_Nero.svg" alt="Ribrain" style="height:18px;filter:brightness(0) invert(1);opacity:.6">
+      <span style="opacity:.4">×</span>
+      <img src="https://macteovens.com/cdn/shop/files/Senza_titolo_Logo_Twitch_1e33f37c-f008-4e7f-ae1b-16c1f38bb9a8_540x.png?v=1708444725" alt="Macte Ovens" style="height:24px;filter:brightness(0) invert(1);opacity:.6">
+    </p>
     <h1>Macte<br><em>Ovens</em></h1>
     <p class="cv-sub">Abbiamo analizzato 17 mesi di campagne pubblicitarie, 414 righe di dati e tutto l'account Meta. Ecco cosa abbiamo trovato, e cosa facciamo.</p>
     <div class="cv-meta">
@@ -812,6 +827,46 @@ h3.ss{font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--m
           <div class="bt-overlay"><div class="bt-caption">Materia prima e tecnica</div><div class="bt-desc">Food photography · Dettaglio</div></div>
         </div>
 
+        <!-- IL MOLINO: immagine 1 -->
+        <div class="bento-tile" data-brand="molino">
+          <div class="bt-img r-sq">
+            <img src="https://raw.githubusercontent.com/michele-riccio/orbis/main/portfolio/molino1.png" alt="Il Molino post 1" loading="lazy">
+            <div class="bt-placeholder"><div class="bt-ph-label">Il Molino</div></div>
+          </div>
+          <div class="bt-brand-tag">Il Molino</div><div class="bt-type-tag">Feed</div>
+          <div class="bt-overlay"><div class="bt-caption">Identità visiva</div><div class="bt-desc">Social post · Instagram</div></div>
+        </div>
+
+        <!-- IL MOLINO: immagine 2 -->
+        <div class="bento-tile" data-brand="molino">
+          <div class="bt-img r-sq">
+            <img src="https://raw.githubusercontent.com/michele-riccio/orbis/main/portfolio/molino2.png" alt="Il Molino post 2" loading="lazy">
+            <div class="bt-placeholder"><div class="bt-ph-label">Il Molino</div></div>
+          </div>
+          <div class="bt-brand-tag">Il Molino</div><div class="bt-type-tag">Grafica</div>
+          <div class="bt-overlay"><div class="bt-caption">Brand in pagina</div><div class="bt-desc">Social post · Instagram</div></div>
+        </div>
+
+        <!-- VITIGNO ITALIA: feste natalizie -->
+        <div class="bento-tile" data-brand="vitigno">
+          <div class="bt-img r-sq">
+            <img src="https://raw.githubusercontent.com/michele-riccio/bzarhotel/main/portfolio/Feste-Natalizie-2018_Vitigno.png" alt="Vitigno Italia Natale" loading="lazy">
+            <div class="bt-placeholder"><div class="bt-ph-label">Vitigno Italia</div></div>
+          </div>
+          <div class="bt-brand-tag">Vitigno Italia</div><div class="bt-type-tag">Stagionale</div>
+          <div class="bt-overlay"><div class="bt-caption">Feste Natalizie 2018</div><div class="bt-desc">Campagna stagionale · Facebook & Instagram</div></div>
+        </div>
+
+        <!-- BERNA -->
+        <div class="bento-tile" data-brand="berna">
+          <div class="bt-img r-sq">
+            <img src="https://raw.githubusercontent.com/michele-riccio/orbis/main/portfolio/berna3.png" alt="Berna" loading="lazy">
+            <div class="bt-placeholder"><div class="bt-ph-label">Berna</div></div>
+          </div>
+          <div class="bt-brand-tag">Berna</div><div class="bt-type-tag">Feed</div>
+          <div class="bt-overlay"><div class="bt-caption">Comunicazione visiva</div><div class="bt-desc">Social post · Instagram</div></div>
+        </div>
+
       </div>
     </div>
 
@@ -848,7 +903,11 @@ h3.ss{font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--m
   <div class="fi">
     <div class="fg">
       <div><h4>Prossimi passi</h4><p>Inserire i link delle referenze Ribrain, allinearci su eventuali aggiustamenti alla proposta, e fissare la call di presentazione con Gennaro.</p></div>
-      <div><h4>Ribrain</h4><p>Strategia, ads e ottimizzazione siti per brand premium del food e dell'HoReCa. Approccio dati-first, esecuzione artigianale.</p></div>
+      <div>
+        <div class="footer-logos">
+          <img src="https://www.ribrainstudio.com/wp-content/uploads/2025/01/Logo_ribrain_Nero.svg" alt="Ribrain" style="height:22px">
+        </div>
+        <p>Strategia, ads e ottimizzazione siti per brand premium del food e dell'HoReCa. Approccio dati-first, esecuzione artigianale.</p></div>
     </div>
     <div class="fm"><span>Macte Ovens × Ribrain · Strategia 2026</span><span>Documento riservato · 20 maggio 2026</span></div>
   </div>
