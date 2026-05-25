@@ -208,8 +208,9 @@ h3.ss{font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--m
 @media print{.nav{display:none}.pg{break-after:page}body{background:#fff}}
 
 /* ═══════ BENTO PORTFOLIO (da m9.html) ═══════ */
-.bento{columns:2;column-gap:10px;margin-top:.5rem}
-@media(max-width:680px){.bento{columns:1;column-gap:8px}}
+.bento{columns:3;column-gap:10px;margin-top:.5rem}
+@media(max-width:900px){.bento{columns:2;column-gap:8px}}
+@media(max-width:560px){.bento{columns:1;column-gap:8px}}
 .bento-tile{display:block;break-inside:avoid;margin-bottom:10px;position:relative;border-radius:12px;overflow:hidden;background:#111;border:.5px solid rgba(117,88,71,.08);opacity:1;transform:none}
 .bt-audio-btn{position:absolute;bottom:.85rem;right:.85rem;z-index:5;width:32px;height:32px;border-radius:50%;background:rgba(30,20,16,.7);backdrop-filter:blur(8px);border:.5px solid rgba(200,168,141,.25);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:background .2s,transform .15s}
 .bt-audio-btn:hover{background:rgba(30,20,16,.9);transform:scale(1.08)}
@@ -743,20 +744,14 @@ h3.ss{font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--m
           <div class="bt-overlay"><div class="bt-caption">Costiera in un frame</div><div class="bt-desc">Reel · 9:16 · Instagram</div></div>
         </div>
 
-        <!-- MEATIN: reel -->
-        <div class="bento-tile" data-brand="meatin">
-          <div class="bt-img r-port">
-            <video autoplay muted loop playsinline><source src="https://raw.githubusercontent.com/michele-riccio/bzarhotel/main/portfolio/meatin.mp4" type="video/mp4"></video>
-            <div class="bt-placeholder"><div class="bt-ph-label">Meatin</div></div>
-            <button class="bt-audio-btn" aria-label="Attiva audio" title="Attiva audio">
-              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path class="icon-muted" d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/>
-                <path class="icon-on" style="display:none" d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/>
-              </svg>
-            </button>
+        <!-- GELOUS: immagine -->
+        <div class="bento-tile" data-brand="gelous">
+          <div class="bt-img r-sq">
+            <img src="https://raw.githubusercontent.com/michele-riccio/macte-ovens/main/portfolio/gelous1.png" alt="Gelous" loading="lazy">
+            <div class="bt-placeholder"><div class="bt-ph-label">Gelous</div></div>
           </div>
-          <div class="bt-brand-tag">Meatin</div><div class="bt-type-tag">Reel</div>
-          <div class="bt-overlay"><div class="bt-caption">La carne in scena</div><div class="bt-desc">Reel · Food storytelling · Instagram</div></div>
+          <div class="bt-brand-tag">Gelous</div><div class="bt-type-tag">Feed</div>
+          <div class="bt-overlay"><div class="bt-caption">Visual identity</div><div class="bt-desc">Social post · Instagram</div></div>
         </div>
 
         <!-- MEATIN: piatto foto -->
@@ -769,11 +764,11 @@ h3.ss{font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--m
           <div class="bt-overlay"><div class="bt-caption">Dettaglio di piatto</div><div class="bt-desc">Food photography · Editoriale</div></div>
         </div>
 
-        <!-- CELA: reel -->
-        <div class="bento-tile" data-brand="cela">
+        <!-- GELOUS: reel -->
+        <div class="bento-tile" data-brand="gelous">
           <div class="bt-img r-port">
-            <video autoplay muted loop playsinline><source src="https://raw.githubusercontent.com/michele-riccio/bzarhotel/main/portfolio/cela.mp4" type="video/mp4"></video>
-            <div class="bt-placeholder"><div class="bt-ph-label">Cela</div></div>
+            <video autoplay muted loop playsinline><source src="https://raw.githubusercontent.com/michele-riccio/macte-ovens/main/portfolio/gelous2.mp4" type="video/mp4"></video>
+            <div class="bt-placeholder"><div class="bt-ph-label">Gelous</div></div>
             <button class="bt-audio-btn" aria-label="Attiva audio" title="Attiva audio">
               <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                 <path class="icon-muted" d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/>
@@ -781,8 +776,8 @@ h3.ss{font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--m
               </svg>
             </button>
           </div>
-          <div class="bt-brand-tag">Cela</div><div class="bt-type-tag">Reel</div>
-          <div class="bt-overlay"><div class="bt-caption">Brand in movimento</div><div class="bt-desc">Reel · Campagna · Instagram</div></div>
+          <div class="bt-brand-tag">Gelous</div><div class="bt-type-tag">Reel</div>
+          <div class="bt-overlay"><div class="bt-caption">Prodotto in movimento</div><div class="bt-desc">Reel · 9:16 · Instagram</div></div>
         </div>
 
         <!-- LEMON APPEAL: reel 2 -->
@@ -865,6 +860,62 @@ h3.ss{font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--m
           </div>
           <div class="bt-brand-tag">Berna</div><div class="bt-type-tag">Feed</div>
           <div class="bt-overlay"><div class="bt-caption">Comunicazione visiva</div><div class="bt-desc">Social post · Instagram</div></div>
+        </div>
+
+        <!-- LUCKY CHARMS -->
+        <div class="bento-tile" data-brand="lucky-charms">
+          <div class="bt-img r-sq">
+            <img src="https://raw.githubusercontent.com/michele-riccio/macte-ovens/main/portfolio/lucky-charms2.png" alt="Lucky Charms" loading="lazy">
+            <div class="bt-placeholder"><div class="bt-ph-label">Lucky Charms</div></div>
+          </div>
+          <div class="bt-brand-tag">Lucky Charms</div><div class="bt-type-tag">Feed</div>
+          <div class="bt-overlay"><div class="bt-caption">Brand identity</div><div class="bt-desc">Social post · Instagram</div></div>
+        </div>
+
+        <!-- MAMMA -->
+        <div class="bento-tile" data-brand="mamma">
+          <div class="bt-img r-sq">
+            <img src="https://raw.githubusercontent.com/michele-riccio/macte-ovens/main/portfolio/mamma1.jpg" alt="Mamma" loading="lazy">
+            <div class="bt-placeholder"><div class="bt-ph-label">Mamma</div></div>
+          </div>
+          <div class="bt-brand-tag">Mamma</div><div class="bt-type-tag">Food</div>
+          <div class="bt-overlay"><div class="bt-caption">Food storytelling</div><div class="bt-desc">Social post · Instagram</div></div>
+        </div>
+
+        <!-- MOLINO: reel macte-ovens repo -->
+        <div class="bento-tile" data-brand="molino">
+          <div class="bt-img r-port">
+            <video autoplay muted loop playsinline><source src="https://raw.githubusercontent.com/michele-riccio/macte-ovens/main/portfolio/molino1.mp4" type="video/mp4"></video>
+            <div class="bt-placeholder"><div class="bt-ph-label">Il Molino</div></div>
+            <button class="bt-audio-btn" aria-label="Attiva audio" title="Attiva audio">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path class="icon-muted" d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/>
+                <path class="icon-on" style="display:none" d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/>
+              </svg>
+            </button>
+          </div>
+          <div class="bt-brand-tag">Il Molino</div><div class="bt-type-tag">Reel</div>
+          <div class="bt-overlay"><div class="bt-caption">Pasta, grano, tradizione</div><div class="bt-desc">Reel · Food storytelling · Instagram</div></div>
+        </div>
+
+        <!-- VIGEVANO -->
+        <div class="bento-tile" data-brand="vigevano">
+          <div class="bt-img r-sq">
+            <img src="https://raw.githubusercontent.com/michele-riccio/macte-ovens/main/portfolio/vigevano1.png" alt="Vigevano" loading="lazy">
+            <div class="bt-placeholder"><div class="bt-ph-label">Vigevano</div></div>
+          </div>
+          <div class="bt-brand-tag">Vigevano</div><div class="bt-type-tag">Feed</div>
+          <div class="bt-overlay"><div class="bt-caption">Territorio e brand</div><div class="bt-desc">Social post · Instagram</div></div>
+        </div>
+
+        <!-- VITIGNO ITALIA -->
+        <div class="bento-tile" data-brand="vitigno">
+          <div class="bt-img r-sq">
+            <img src="https://raw.githubusercontent.com/michele-riccio/macte-ovens/main/portfolio/vitigno1.png" alt="Vitigno Italia" loading="lazy">
+            <div class="bt-placeholder"><div class="bt-ph-label">Vitigno Italia</div></div>
+          </div>
+          <div class="bt-brand-tag">Vitigno Italia</div><div class="bt-type-tag">Feed</div>
+          <div class="bt-overlay"><div class="bt-caption">Vino e comunicazione</div><div class="bt-desc">Social post · Instagram</div></div>
         </div>
 
       </div>
